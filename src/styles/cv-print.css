@@ -1,0 +1,354 @@
+/*
+ * CV page print layout. Imported by src/pages/CV.jsx only, but Vite bundles it into the site CSS, so every rule is
+ * scoped: to the .cv-* hooks in CV.jsx, or to a page that contains the résumé (:has(.cv-doc)).
+ *
+ * Printing /cv/ or /en/cv/ gives the résumé alone on A4, close to the PDF editions in public/files/: one column,
+ * 9.6pt Inter, cobalt section headings, 14 × 16 mm margins. Hidden on paper: the site header and footer, the page
+ * header with its download and print buttons, case-study links and the closing contact band (.cv-noprint).
+ * Colours are the theme variables of src/index.css. These rules are unlayered, so they win over Tailwind's
+ * layered utilities without !important.
+ */
+
+/* Shown on paper only (e.g. the site address in the contact line). */
+.cv-print-only {
+  display: none;
+}
+
+@media print {
+  @page cv {
+    size: A4;
+    margin: 14mm 16mm;
+  }
+
+  /* ---------- page chrome ---------- */
+  body:has(.cv-doc) :is(header, footer):not(.cv-doc *),
+  .cv-noprint {
+    display: none;
+  }
+
+  html:has(.cv-doc),
+  body:has(.cv-doc) {
+    background: var(--color-surface);
+  }
+
+  /* Layout wrapper (min-h-dvh flex column) and the résumé's own wrappers: no height or padding on paper. */
+  body:has(.cv-doc) #root > div {
+    display: block;
+    min-height: 0;
+  }
+
+  .cv-print-flat {
+    margin: 0;
+    padding: 0;
+    max-width: none;
+  }
+
+  .cv-print-only {
+    display: inline;
+  }
+
+  /* ---------- the résumé ---------- */
+  .cv-doc {
+    page: cv;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: none;
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 9.6pt;
+    line-height: 1.33;
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Reset the screen spacing and type scale; the rules below set the print values. */
+  .cv-doc * {
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: inherit;
+    line-height: inherit;
+    letter-spacing: normal;
+    text-transform: none;
+  }
+
+  /* Icons, and screen-reader notes such as "(opens in a new tab)", mean nothing on paper. */
+  .cv-doc svg,
+  .cv-doc .sr-only {
+    display: none;
+  }
+
+  .cv-doc a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Header: name, title, descriptor, contact line. */
+  .cv-doc .cv-head {
+    padding-bottom: 2.6mm;
+    border-bottom: 0.9pt solid var(--color-ink);
+  }
+
+  .cv-doc .cv-name {
+    font-family: var(--font-sans);
+    font-size: 21pt;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--color-ink);
+  }
+
+  .cv-doc .cv-title {
+    margin-top: 1.4mm;
+    font-size: 11.5pt;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--color-ink);
+  }
+
+  .cv-doc .cv-descriptor {
+    margin-top: 0.5mm;
+  }
+
+  .cv-doc .cv-descriptor > * {
+    display: inline;
+    background: none;
+    color: var(--color-accent);
+    font-size: 9.8pt;
+    font-weight: 500;
+  }
+
+  .cv-doc .cv-contact {
+    display: block;
+    margin-top: 1.6mm;
+    font-size: 9pt;
+    line-height: 1.45;
+    color: var(--color-muted);
+  }
+
+  .cv-doc .cv-contact li,
+  .cv-doc .cv-contact a {
+    display: inline;
+  }
+
+  .cv-doc .cv-contact a,
+  .cv-doc .cv-contact .cv-print-only {
+    color: var(--color-ink);
+  }
+
+  .cv-doc .cv-contact li + li::before {
+    content: " · ";
+    color: var(--color-muted);
+  }
+
+  /* Sections: one column, heading above the content. */
+  .cv-doc .cv-section {
+    display: block;
+  }
+
+  .cv-doc .cv-h2 {
+    position: static;
+    margin: 3.3mm 0 1.5mm;
+    padding-bottom: 0.8mm;
+    border-bottom: 0.6pt solid var(--color-line);
+    font-family: var(--font-sans);
+    font-size: 10.6pt;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--color-accent);
+    break-after: avoid;
+  }
+
+  .cv-doc .cv-text {
+    color: var(--color-ink);
+    line-height: 1.42;
+  }
+
+  .cv-doc .cv-text + .cv-text {
+    margin-top: 1.2mm;
+  }
+
+  /* Entries (jobs, projects, education). */
+  .cv-doc .cv-entry + .cv-entry {
+    margin-top: 2.2mm;
+  }
+
+  .cv-doc .cv-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    column-gap: 4mm;
+  }
+
+  .cv-doc .cv-row > :first-child {
+    min-width: 0;
+  }
+
+  .cv-doc .cv-entry-head,
+  .cv-doc .cv-role-row {
+    break-inside: avoid;
+    break-after: avoid;
+  }
+
+  .cv-doc .cv-h3 {
+    font-family: var(--font-sans);
+    font-size: 10.2pt;
+    font-weight: 700;
+    color: var(--color-ink);
+  }
+
+  /* The company site next to the name (e.g. eribitech.com) prints as plain text. */
+  .cv-doc .cv-org-link {
+    display: inline;
+    margin-left: 1.5mm;
+    font-weight: 500;
+    color: var(--color-accent);
+  }
+
+  .cv-doc .cv-role {
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+
+  .cv-doc .cv-role-block {
+    margin-top: 0.3mm;
+  }
+
+  .cv-doc .cv-role-block + .cv-role-block {
+    margin-top: 1.8mm;
+  }
+
+  .cv-doc .cv-meta {
+    flex: none;
+    white-space: nowrap;
+    font-family: var(--font-sans);
+    font-size: 9pt;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-muted);
+  }
+
+  .cv-doc .cv-bullets {
+    margin-top: 0.9mm;
+    padding-left: 4.4mm;
+    list-style: disc;
+    color: var(--color-ink);
+  }
+
+  .cv-doc .cv-bullets li {
+    padding-left: 0.6mm;
+    break-inside: avoid;
+  }
+
+  .cv-doc .cv-bullets li + li {
+    margin-top: 0.55mm;
+  }
+
+  .cv-doc .cv-bullets li::marker {
+    color: var(--color-muted);
+  }
+
+  .cv-doc .cv-note {
+    margin-top: 0.6mm;
+    color: var(--color-ink);
+  }
+
+  /* Project sub line: "Client project · darkpost.com.tr · Next.js 16, …" */
+  .cv-doc .cv-sub {
+    display: block;
+    margin-top: 0.3mm;
+    font-size: 9pt;
+    color: var(--color-muted);
+  }
+
+  .cv-doc .cv-sub > * {
+    display: inline;
+    background: none;
+    color: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+  }
+
+  .cv-doc .cv-sub > * + *::before {
+    content: " · ";
+  }
+
+  .cv-doc .cv-entry > .cv-text {
+    margin-top: 0.8mm;
+  }
+
+  /* Skills: "Backend: C#, .NET 8, …" with a hanging indent. */
+  .cv-doc .cv-skills > div {
+    display: block;
+    padding-left: 4.4mm;
+    text-indent: -4.4mm;
+  }
+
+  .cv-doc .cv-skills > div + div {
+    margin-top: 0.9mm;
+  }
+
+  .cv-doc .cv-skills dt,
+  .cv-doc .cv-skills dd {
+    display: inline;
+    color: var(--color-ink);
+  }
+
+  .cv-doc .cv-skills dt {
+    font-weight: 600;
+  }
+
+  .cv-doc .cv-skills dt::after {
+    content: ": ";
+  }
+
+  /* Certifications: one bulleted line each, "Course — issuer · date". */
+  .cv-doc .cv-certs {
+    padding-left: 4.4mm;
+    list-style: disc;
+  }
+
+  .cv-doc .cv-certs li {
+    break-inside: avoid;
+  }
+
+  .cv-doc .cv-certs li + li {
+    margin-top: 0.9mm;
+  }
+
+  .cv-doc .cv-certs li::marker {
+    color: var(--color-muted);
+  }
+
+  .cv-doc .cv-certs li > * {
+    display: inline;
+    font-weight: 400;
+    color: var(--color-ink);
+  }
+
+  .cv-doc .cv-certs li > * + * {
+    color: var(--color-muted);
+  }
+
+  .cv-doc .cv-certs li > * + *::before {
+    content: " — ";
+  }
+
+  /* Languages on one line: "Turkish — Native · English — …" */
+  .cv-doc .cv-langs li {
+    display: inline;
+  }
+
+  .cv-doc .cv-langs li + li::before {
+    content: " · ";
+    color: var(--color-muted);
+  }
+
+  .cv-doc .cv-langs span {
+    font-weight: 400;
+    color: var(--color-ink);
+  }
+}

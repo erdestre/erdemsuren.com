@@ -1,0 +1,34 @@
+# Erdem Süren
+
+> Full-Stack Software Engineer · .NET & React/Next.js — AI-native, end to end. Founder of Eribitech. İstanbul, Türkiye.
+
+Erdem designs, builds and runs business software end to end: .NET APIs, React/Next.js front ends, SQL Server and PostgreSQL, and the CI/CD that ships them. He works AI-native: he builds the environment AI coding agents work in (tests, separate test and production servers, automated deploys), directs the agents, and owns the architecture, the review and the release. He is a Software Development Specialist at BELBİM and the founder of Eribitech. At BELBİM he built the corporate websites belbim.istanbul and istanbulkart.istanbul, and he is part of the team developing the İstanbulkart mobile app. Open to full-time roles and selected freelance projects.
+
+The site is bilingual: Turkish at https://erdemsuren.com/ and English under https://erdemsuren.com/en/.
+
+## Pages
+
+- [About](https://erdemsuren.com/en/about/): background, how he works with AI, skills by depth, education
+- [Projects](https://erdemsuren.com/en/projects/): case studies
+- [Services](https://erdemsuren.com/en/services/): freelance work — custom software, integrations, AI features
+- [CV](https://erdemsuren.com/en/cv/): résumé (PDF: https://erdemsuren.com/files/erdem-suren-cv-en.pdf)
+- [Contact](https://erdemsuren.com/en/contact/): erdemsurentr@gmail.com
+
+## Case studies
+
+- [Eribi](https://erdemsuren.com/en/projects/eribi/): multi-tenant e-commerce platform (founder)
+- [AI-native delivery](https://erdemsuren.com/en/projects/ai-native-delivery/): how he ships with AI coding agents and self-hosted CI/CD
+- [Eribi Growth](https://erdemsuren.com/en/projects/eribi-growth/): lead-finding and outreach product with an AI assistant
+- [Eribi Creative](https://erdemsuren.com/en/projects/eribi-creative/): AI media studio for brands
+- [BELBİM: belbim.istanbul and istanbulkart.istanbul](https://erdemsuren.com/en/projects/belbim-headless-cms/): the two corporate websites he built at BELBİM with an Umbraco headless CMS and Next.js 15; he is also on the İstanbulkart mobile app team
+- [İGDAŞ field operations](https://erdemsuren.com/en/projects/igdas-field-operations/): field-operations workflows modelled as state machines
+- [Drift Max](https://erdemsuren.com/en/projects/drift-max/): core systems work on mobile racing games (team)
+- [DarkPost Agency website](https://erdemsuren.com/en/projects/darkpost/): client project
+- [Olser Bilişim](https://erdemsuren.com/en/projects/olser-bilisim/): client project
+- [ODİS](https://erdemsuren.com/en/projects/odis/): age-rating workflow prototype
+
+## Elsewhere
+
+- LinkedIn: https://www.linkedin.com/in/erdemsurentr/
+- GitHub: https://github.com/erdestre
+- Eribitech: https://eribitech.com
