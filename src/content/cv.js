@@ -1,5 +1,5 @@
 // CV page: the same text as the one-page PDFs in public/files/.
-// No phone number on the web CV. `slug` links an entry to its project page.
+// No phone number on the web CV.
 
 export const CV_PDF = {
   tr: "/files/erdem-suren-cv-tr.pdf",
@@ -9,24 +9,23 @@ export const CV_PDF = {
 const cv = {
   tr: {
     heading: "CV",
-    intro: "Tek sayfa. PDF olarak da indirebilirsiniz.",
+    intro: "Product Engineer · .NET, Next.js, React Native. Tek sayfa, PDF olarak da var.",
     pdf: { tr: "PDF (Türkçe)", en: "PDF (İngilizce)" },
     summaryTitle: "Özet",
     summary:
-      "5 yıllık yazılım deneyimi. İGDAŞ ve BELBİM'de kurumsal sistemler geliştirdim. Backend, frontend, mobil ve DevOps. Sunucuları kurdum, ağı yapılandırdım, yazılımı canlıya aldım. Eribitech'i kurdum: 3 ürünlü, mikroservis mimarili bir platform.",
+      "5 yıllık yazılım deneyimi. Sistemleri uçtan uca kurdum: mimari, backend, web, mobil (React Native), sunucu ve ağ. İGDAŞ ve BELBİM'de kurumsal sistemler geliştirdim. Eribitech'i kurdum: 3 ürünlü, mikroservis mimarili bir platform.",
     experienceTitle: "Deneyim",
     experience: [
       {
         org: "BELBİM",
         role: "Uzman Yazılım Geliştirici",
         period: "Tem 2025 – Günümüz",
-        slug: "belbim-headless-cms",
         points: [
           "Headless CMS'i geliştirdim: modüler monolit, Clean Architecture.",
           "belbim.istanbul ve istanbulkart.istanbul'u geliştirdim: Next.js 15, SSG/ISR, TR/EN.",
           "Sunucuların Next.js yapılandırmasını yaptım.",
           "İstanbulkart mobil backend: sürüm tabanlı içerik senkronizasyonu. RabbitMQ, Redis, Hangfire.",
-          "İstanbulkart mobil uygulamasının entegrasyonlarını bağladım, güncellemelerini geliştirdim.",
+          "İstanbulkart mobil uygulaması (React Native): entegrasyonları bağladım, güncellemeleri geliştirdim. TanStack Query.",
           "FluentValidation, LDAP / Active Directory. Şu anda DevOps sistemini kuruyorum.",
         ],
       },
@@ -34,7 +33,6 @@ const cv = {
         org: "Eribitech",
         role: "Kurucu",
         period: "2025 – Günümüz",
-        slug: "eribi",
         points: [
           "Eribi'yi kurdum: e-ticaret, Eribi Growth, Eribi Creative. 3 ürün, tek platform.",
           "Mikroservis mimarisi: YARP API gateway arkasında 9 servis. .NET 8, Next.js, TanStack Query.",
@@ -48,7 +46,6 @@ const cv = {
         org: "İGDAŞ",
         role: "Yazılım Geliştirici",
         period: "Ara 2023 – Tem 2025",
-        slug: "igdas-field-operations",
         points: [
           "Operasyon Otomasyon Sistemi'ni geliştirdim: saha ekipleri 7/24 kullanıyor.",
           "Durum makinesi iş akışları, kural tabanlı planlama, tutarlı stok akışları.",
@@ -77,7 +74,7 @@ const cv = {
     skills: [
       { label: "Backend", items: "C#, .NET 8, ASP.NET Core, EF Core, Hangfire, RabbitMQ, Redis, FluentValidation" },
       { label: "Mimari", items: "Mikroservis, modüler monolit, Clean Architecture, YARP, Umbraco (headless), durum makineleri" },
-      { label: "Frontend ve mobil", items: "React, Next.js, TypeScript, TanStack Query, Tailwind CSS, React Native, Expo" },
+      { label: "Mobil ve web", items: "React Native, Expo, React, Next.js, TypeScript, TanStack Query, Tailwind CSS" },
       { label: "Veri", items: "SQL Server (T-SQL), PostgreSQL, Redis" },
       { label: "DevOps", items: "GitHub Actions, IIS, Windows Server, Cloudflare, PowerShell, PM2, ağ yapılandırması" },
       { label: "Entegrasyon", items: "SAP S/4HANA, Active Directory / LDAP, ödeme, e-fatura, kargo, pazaryeri, ERP" },
@@ -89,24 +86,23 @@ const cv = {
   },
   en: {
     heading: "CV",
-    intro: "One page. Also available as a PDF.",
+    intro: "Product Engineer · .NET, Next.js, React Native. One page, also as a PDF.",
     pdf: { tr: "PDF (Turkish)", en: "PDF (English)" },
     summaryTitle: "Summary",
     summary:
-      "5 years of software development. Built enterprise systems at İGDAŞ and BELBİM. Back end, front end, mobile, DevOps. I set up servers, configured networks and shipped to production. Founder of Eribitech: a three-product microservice platform.",
+      "5 years of software development. I build systems end to end: architecture, back end, web, mobile (React Native), servers and network. Built enterprise systems at İGDAŞ and BELBİM. Founder of Eribitech: a three-product microservice platform.",
     experienceTitle: "Experience",
     experience: [
       {
         org: "BELBİM",
         role: "Software Development Specialist",
         period: "Jul 2025 – Present",
-        slug: "belbim-headless-cms",
         points: [
           "Built the headless CMS: modular monolith, Clean Architecture.",
           "Built belbim.istanbul and istanbulkart.istanbul: Next.js 15, SSG/ISR, TR/EN.",
           "Configured Next.js on the servers.",
           "İstanbulkart mobile back end: version-based content synchronization. RabbitMQ, Redis, Hangfire.",
-          "Connected the İstanbulkart mobile app's integrations and built its updates.",
+          "İstanbulkart mobile app (React Native): connected the integrations and built the updates. TanStack Query.",
           "FluentValidation, LDAP / Active Directory. Now building the DevOps system.",
         ],
       },
@@ -114,7 +110,6 @@ const cv = {
         org: "Eribitech",
         role: "Founder",
         period: "2025 – Present",
-        slug: "eribi",
         points: [
           "Built Eribi: e-commerce, Eribi Growth, Eribi Creative. Three products, one platform.",
           "Microservice architecture: 9 services behind a YARP API gateway. .NET 8, Next.js, TanStack Query.",
@@ -128,7 +123,6 @@ const cv = {
         org: "İGDAŞ",
         role: "Software Developer",
         period: "Dec 2023 – Jul 2025",
-        slug: "igdas-field-operations",
         points: [
           "Built the Operations Automation System that field teams use 24/7.",
           "State-machine workflows, rule-based scheduling, consistent inventory flows.",
@@ -157,7 +151,7 @@ const cv = {
     skills: [
       { label: "Back end", items: "C#, .NET 8, ASP.NET Core, EF Core, Hangfire, RabbitMQ, Redis, FluentValidation" },
       { label: "Architecture", items: "Microservices, modular monolith, Clean Architecture, YARP, Umbraco (headless), state machines" },
-      { label: "Front end and mobile", items: "React, Next.js, TypeScript, TanStack Query, Tailwind CSS, React Native, Expo" },
+      { label: "Mobile and web", items: "React Native, Expo, React, Next.js, TypeScript, TanStack Query, Tailwind CSS" },
       { label: "Data", items: "SQL Server (T-SQL), PostgreSQL, Redis" },
       { label: "DevOps", items: "GitHub Actions, IIS, Windows Server, Cloudflare, PowerShell, PM2, network configuration" },
       { label: "Integrations", items: "SAP S/4HANA, Active Directory / LDAP, payment, e-invoice, shipping, marketplaces, ERP" },

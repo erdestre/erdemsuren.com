@@ -1,14 +1,45 @@
-// Home page copy (/ and /en/). Name and title come from common.js; featured projects from projects.js.
+// Home page copy (/ and /en/). Name, title, stack and focus come from common.js; featured projects from projects.js.
 
 const home = {
   tr: {
     lead: [
+      "Sistemleri uçtan uca kurdum: mimari, backend, web, mobil, sunucu.",
       "BELBİM'de headless CMS'i, belbim.istanbul ve istanbulkart.istanbul'u geliştirdim.",
-      "İstanbulkart mobil backend'inde sürüm tabanlı içerik senkronizasyonu kurdum: RabbitMQ, Redis, Hangfire.",
+      "İstanbulkart mobil (React Native): entegrasyonları bağladım, güncellemeleri geliştirdim.",
       "Eribitech'i kurdum: üç ürünlü, mikroservis mimarili bir platform.",
-      "Sunucuları kurdum, ağı yapılandırdım, yazılımı canlıya aldım.",
+      "Şu anda BELBİM'in DevOps sistemini kuruyorum.",
     ],
+    // Accessible name of the animated system map in the hero.
+    mapLabel:
+      "Kurduğum sistemlerin şeması: React Native ve Next.js istemcileri, YARP gateway, .NET servisleri, RabbitMQ, Redis ve PostgreSQL; GitHub Actions ile IIS ve Cloudflare'a yayın.",
+    map: { services: ".NET servisleri", deploy: "yayın" },
     work: { title: "Öne çıkan işler" },
+    layers: {
+      title: "Uçtan uca sistem",
+      text: "Mimariden canlıya kadar her katmanı kurdum.",
+      items: [
+        {
+          key: "architecture",
+          title: "Mimari",
+          tags: ["Mikroservis", "Modüler monolit", "Clean Architecture", "YARP gateway", "Çok kiracılı yapı"],
+        },
+        {
+          key: "backend",
+          title: "Backend ve veri",
+          tags: [".NET 8", "ASP.NET Core", "EF Core", "RabbitMQ", "Redis", "Hangfire", "FluentValidation", "SQL Server", "PostgreSQL"],
+        },
+        {
+          key: "client",
+          title: "Mobil ve web",
+          tags: ["React Native", "Expo", "Next.js", "React", "TypeScript", "TanStack Query", "Tailwind CSS"],
+        },
+        {
+          key: "ops",
+          title: "DevOps ve altyapı",
+          tags: ["GitHub Actions", "Windows Server", "IIS", "Cloudflare", "Ağ yapılandırması", "PowerShell"],
+        },
+      ],
+    },
     experience: {
       title: "Deneyim",
       items: [
@@ -17,14 +48,14 @@ const home = {
           org: "BELBİM",
           role: "Uzman Yazılım Geliştirici",
           period: "2025 – Günümüz",
-          text: "Headless CMS, iki kurumsal site, İstanbulkart mobil backend, DevOps.",
+          text: "Headless CMS, iki kurumsal site, İstanbulkart mobil (React Native) ve backend'i, DevOps.",
         },
         {
           key: "eribitech",
           org: "Eribitech",
           role: "Kurucu",
           period: "2025 – Günümüz",
-          text: "Eribi: e-ticaret, Growth, Creative. Mikroservis, kendi sunucularım.",
+          text: "Eribi: e-ticaret, Growth, Creative. Mikroservis mimarisi, kendi sunucularım.",
         },
         {
           key: "igdas",
@@ -42,17 +73,46 @@ const home = {
         },
       ],
     },
-    stack: { title: "Teknolojiler" },
     cta: { title: "Bir pozisyon mu var?", text: "Kısa bir mesaj yeter." },
   },
   en: {
     lead: [
+      "Systems built end to end: architecture, back end, web, mobile, servers.",
       "At BELBİM I built the headless CMS, belbim.istanbul and istanbulkart.istanbul.",
-      "In the İstanbulkart mobile back end I built version-based content sync: RabbitMQ, Redis, Hangfire.",
-      "I founded Eribitech: a three-product platform on a microservice architecture.",
-      "I set up the servers, configured the network and shipped to production.",
+      "İstanbulkart mobile (React Native): connected the integrations, built the updates.",
+      "Founded Eribitech: a three-product platform on a microservice architecture.",
+      "Now building BELBİM's DevOps system.",
     ],
+    mapLabel:
+      "Map of the systems I build: React Native and Next.js clients, a YARP gateway, .NET services, RabbitMQ, Redis and PostgreSQL; delivery with GitHub Actions to IIS and Cloudflare.",
+    map: { services: ".NET services", deploy: "deploy" },
     work: { title: "Selected work" },
+    layers: {
+      title: "End-to-end systems",
+      text: "From architecture to production, I built every layer.",
+      items: [
+        {
+          key: "architecture",
+          title: "Architecture",
+          tags: ["Microservices", "Modular monolith", "Clean Architecture", "YARP gateway", "Multi-tenancy"],
+        },
+        {
+          key: "backend",
+          title: "Back end and data",
+          tags: [".NET 8", "ASP.NET Core", "EF Core", "RabbitMQ", "Redis", "Hangfire", "FluentValidation", "SQL Server", "PostgreSQL"],
+        },
+        {
+          key: "client",
+          title: "Mobile and web",
+          tags: ["React Native", "Expo", "Next.js", "React", "TypeScript", "TanStack Query", "Tailwind CSS"],
+        },
+        {
+          key: "ops",
+          title: "DevOps and infrastructure",
+          tags: ["GitHub Actions", "Windows Server", "IIS", "Cloudflare", "Networking", "PowerShell"],
+        },
+      ],
+    },
     experience: {
       title: "Experience",
       items: [
@@ -61,7 +121,7 @@ const home = {
           org: "BELBİM",
           role: "Software Development Specialist",
           period: "2025 – present",
-          text: "Headless CMS, two corporate websites, İstanbulkart mobile back end, DevOps.",
+          text: "Headless CMS, two corporate websites, İstanbulkart mobile (React Native) and its back end, DevOps.",
         },
         {
           key: "eribitech",
@@ -86,33 +146,8 @@ const home = {
         },
       ],
     },
-    stack: { title: "Stack" },
     cta: { title: "Hiring?", text: "A short message is enough." },
   },
 };
-
-// Same list in both languages.
-export const HOME_STACK = [
-  "C#",
-  ".NET 8",
-  "ASP.NET Core",
-  "EF Core",
-  "Hangfire",
-  "RabbitMQ",
-  "Redis",
-  "FluentValidation",
-  "React",
-  "Next.js",
-  "TypeScript",
-  "TanStack Query",
-  "Tailwind CSS",
-  "React Native",
-  "SQL Server",
-  "PostgreSQL",
-  "GitHub Actions",
-  "IIS",
-  "Cloudflare",
-  "Windows Server",
-];
 
 export default home;

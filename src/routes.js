@@ -1,9 +1,5 @@
 // Single route table for the client router, the language toggle, <Seo>, the prerender script and the sitemap.
 // Trailing slash is canonical; internal links must always use these exact forms (ARCH.md §3).
-import { PROJECT_SLUGS } from "./content/projectSlugs.js";
-
-export { PROJECT_SLUGS };
-
 export const SITE_URL = "https://erdemsuren.com";
 export const LANGS = ["tr", "en"];
 export const DEFAULT_LANG = "tr";
@@ -11,14 +7,13 @@ export const DEFAULT_LANG = "tr";
 export const ROUTES = {
   home: { tr: "/", en: "/en/" },
   projects: { tr: "/projeler/", en: "/en/projects/" },
-  project: { tr: "/projeler/:slug/", en: "/en/projects/:slug/" },
   cv: { tr: "/cv/", en: "/en/cv/" },
   contact: { tr: "/iletisim/", en: "/en/contact/" },
   privacy: { tr: "/gizlilik/", en: "/en/privacy/" },
 };
 
 // Page order, used for prerendering, the sitemap and the menus. Every key is indexed.
-// Removed pages redirect in public/web.config (/hakkimda/ → /cv/, /hizmetler/ → /).
+// Removed pages redirect in public/web.config (/hakkimda/ → /cv/, /hizmetler/ → /, /projeler/<slug>/ → /projeler/).
 export const PAGE_KEYS = ["home", "projects", "cv", "contact", "privacy"];
 // Header menu (desktop and mobile): the brand links home, contact is the header CTA, privacy is footer-only.
 export const NAV_KEYS = PAGE_KEYS.filter((key) => !["home", "contact", "privacy"].includes(key));
@@ -61,10 +56,8 @@ const MATCHERS = Object.entries(ROUTES).flatMap(([key, paths]) =>
   }),
 );
 
-// Matches a pathname against the route table. Returns { key, lang, params } or null.
-// Unknown project slugs return null, exactly like any other unknown path (they render the 404 page).
-// `anySlug: true` matches like the client router does (any slug), e.g. to preload the page module it will render.
-export function matchRoute(pathname, { anySlug = false } = {}) {
+// Matches a pathname against the route table. Returns { key, lang, params } or null (unknown path: the 404 page).
+export function matchRoute(pathname) {
   let path = String(pathname ?? "/").split(/[?#]/)[0] || "/";
   if (!path.endsWith("/")) path += "/";
   for (const matcher of MATCHERS) {
@@ -78,7 +71,6 @@ export function matchRoute(pathname, { anySlug = false } = {}) {
     } catch {
       return null;
     }
-    if (matcher.key === "project" && !anySlug && !PROJECT_SLUGS.includes(params.slug)) return null;
     return { key: matcher.key, lang: matcher.lang, params };
   }
   return null;
@@ -93,18 +85,11 @@ export function alternatePath(location, targetLang) {
   return pathFor(match.key, targetLang, match.params);
 }
 
-// Every prerendered page: route x language, project pages for every slug. 404 pages are in NOT_FOUND_PAGES.
+// Every prerendered page: route x language. 404 pages are in NOT_FOUND_PAGES.
 export function allPrerenderPaths() {
   const pages = [];
   for (const key of PAGE_KEYS) {
     for (const lang of LANGS) pages.push({ key, lang, params: {}, path: pathFor(key, lang) });
-    if (key === "projects") {
-      for (const slug of PROJECT_SLUGS) {
-        for (const lang of LANGS) {
-          pages.push({ key: "project", lang, params: { slug }, path: pathFor("project", lang, { slug }) });
-        }
-      }
-    }
   }
   return pages;
 }

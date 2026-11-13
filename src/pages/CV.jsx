@@ -1,19 +1,14 @@
 import { FiDownload } from "react-icons/fi";
-import { Link } from "react-router-dom";
 import { ButtonLink, PageHeader, Section } from "../components/ui/index.js";
 import cv, { CV_PDF } from "../content/cv.js";
 import { useLang } from "../i18n/LanguageContext.jsx";
-import { pathFor } from "../routes.js";
 import Seo from "../seo/Seo.jsx";
-
-const ORG_LINK = "underline-offset-4 hover:text-accent hover:underline";
 
 /** CV page: the one-page résumé as HTML (same text as the PDFs) and the two PDF downloads. */
 export default function CV() {
   const lang = useLang();
   const t = cv[lang];
   const pdfLangs = lang === "tr" ? ["tr", "en"] : ["en", "tr"];
-  const projectPath = (slug) => pathFor("project", lang, { slug });
 
   return (
     <>
@@ -48,13 +43,7 @@ export default function CV() {
                 <li key={entry.org}>
                   <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
                     <h3 className="text-lg font-semibold text-ink">
-                      {entry.slug ? (
-                        <Link to={projectPath(entry.slug)} className={ORG_LINK}>
-                          {entry.org}
-                        </Link>
-                      ) : (
-                        entry.org
-                      )}
+                      {entry.org}
                       <span className="font-normal text-muted"> · {entry.role}</span>
                     </h3>
                     <p className="shrink-0 font-mono text-sm text-muted">{entry.period}</p>

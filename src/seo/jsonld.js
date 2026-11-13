@@ -1,13 +1,12 @@
 // JSON-LD (@graph) per page. Facts only:
-// - every page: WebSite, Person (jobTitle = the site title's short form, worksFor BELBİM, alumniOf Bahçeşehir,
+// - every page: WebSite, Person (jobTitle = the site title, worksFor BELBİM, alumniOf Bahçeşehir,
 //   sameAs LinkedIn + GitHub only) and Organization Eribitech (founder → Person);
-// - per page: ProfilePage (cv), CollectionPage + hasPart (projects), ContactPage (contact), CreativeWork (project
-//   pages). BreadcrumbList only where a breadcrumb is visible (project pages: Home › Projects › project).
-// Page data comes from the page itself, so this module (main bundle) never imports page copy: the projects index
-// passes its project list (<Seo projects>) and a project page its project (<Seo project>).
+// - per page: ProfilePage (cv), CollectionPage + hasPart (projects: one CreativeWork per project card),
+//   ContactPage (contact). There are no project pages and no breadcrumbs.
+// Page data comes from the page itself, so this module (main bundle) never imports page copy: the projects page
+// passes its project list (<Seo projects>).
 // Never: ProfessionalService/LocalBusiness, Review/AggregateRating, FAQPage, SearchAction, telephone.
-import common, { CONTACT, PERSON } from "../content/common.js";
-import { PROJECT_IMAGES } from "../content/projectImages.js";
+import { CONTACT, PERSON } from "../content/common.js";
 import { absoluteUrl, pathFor, SITE_URL } from "../routes.js";
 
 const ID = {
@@ -21,17 +20,17 @@ const PERSON_IMAGE = `${SITE_URL}/img/erdem-suren-512.jpg`;
 
 const PERSON_TEXT = {
   tr: {
-    jobTitle: "Full-Stack Yazılım Mühendisi",
+    jobTitle: "Product Engineer",
     description:
-      "Backend, frontend, mobil ve DevOps. BELBİM'de headless CMS'i, belbim.istanbul ve istanbulkart.istanbul'u geliştirdi. Eribitech'in kurucusu.",
+      "Sistemleri uçtan uca kurdu: mimari, backend, web, React Native mobil, DevOps. BELBİM'de headless CMS'i ve iki kurumsal siteyi geliştirdi, İstanbulkart mobil uygulamasında çalıştı. Eribitech'in kurucusu.",
     university: "Bahçeşehir Üniversitesi",
     languages: ["Türkçe", "İngilizce"],
     multiTenancy: "Çok kiracılı mimari",
   },
   en: {
-    jobTitle: "Full-Stack Software Engineer",
+    jobTitle: "Product Engineer",
     description:
-      "Back end, front end, mobile and DevOps. Built the headless CMS, belbim.istanbul and istanbulkart.istanbul at BELBİM. Founder of Eribitech.",
+      "Builds systems end to end: architecture, back end, web, React Native mobile, DevOps. Built the headless CMS and two corporate websites at BELBİM and works on the İstanbulkart mobile app. Founder of Eribitech.",
     university: "Bahçeşehir University",
     languages: ["Turkish", "English"],
     multiTenancy: "Multi-tenancy",
@@ -41,13 +40,10 @@ const PERSON_TEXT = {
 const PAGE_TYPES = {
   home: "WebPage",
   projects: "CollectionPage",
-  project: "WebPage",
   cv: "ProfilePage",
   contact: "ContactPage",
   privacy: "WebPage",
 };
-
-const projectUrl = (slug, lang) => absoluteUrl(pathFor("project", lang, { slug }));
 
 function websiteNode() {
   return {
@@ -96,8 +92,10 @@ function personNode(lang) {
       "Next.js",
       "TypeScript",
       "React Native",
+      "Expo",
       "Microsoft SQL Server",
       "PostgreSQL",
+      "Software architecture",
       "Microservices",
       "Clean Architecture",
       t.multiTenancy,
@@ -120,53 +118,19 @@ function eribitechNode() {
   };
 }
 
-function breadcrumbNode(items) {
-  return {
-    "@type": "BreadcrumbList",
-    itemListElement: items.map((item, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: item.name,
-      item: item.url,
-    })),
-  };
-}
-
-// Host name of an absolute URL ("https://eribitech.com" → "eribitech.com").
-const hostOf = (url) => new URL(url).host;
-
-// The project page is a write-up by Erdem about a product or site (`about`), never that site itself (no sameAs: the
-// Eribitech Organization already owns https://eribitech.com). Employer work (`employer`: BELBİM, İGDAŞ) lists him
-// as a contributor, not as the author. A page about several live sites (`liveUrls`) is `about` each of them.
-function creativeWorkNode(project, lang, url) {
-  const image = project.image ? PROJECT_IMAGES[project.image] : null;
-  const node = {
-    "@type": "CreativeWork",
-    "@id": `${url}#project`,
-    name: project.name[lang],
-    description: project.line[lang],
-    url,
-    inLanguage: lang,
-    ...(project.employer ? { contributor: { "@id": ID.person } } : { author: { "@id": ID.person } }),
-    keywords: project.stack.join(", "),
-  };
-  if (image) node.image = absoluteUrl(image.large);
-  const sites = (project.liveUrls ?? []).map((site) => ({ "@type": "WebSite", name: hostOf(site), url: site }));
-  if (sites.length) node.about = sites.length === 1 ? sites[0] : sites;
-  return node;
-}
+// Own work (Eribitech, GitHub) lists Erdem as the author; employer work (BELBİM, İGDAŞ, Tiramisu) as a contributor.
+// `url` is the project's public page when it has one; the @id is its card on the projects page.
+const OWN_ORGS = ["Eribitech", "GitHub"];
 
 /**
- * @param {{ page: string, lang: "tr" | "en", params?: object, title: string, description: string,
- *   projects?: object[], project?: object }} input
- *   projects – projects index: every project (slug, name) for CollectionPage.hasPart;
- *   project  – project page: the project (slug, name, line, stack, image, liveUrls, employer) for CreativeWork.
+ * @param {{ page: string, lang: "tr" | "en", title: string, description: string, projects?: object[] }} input
+ *   projects – projects page: every project card (id, org, name, line, link) for CollectionPage.hasPart.
  */
-export function buildJsonLd({ page, lang, params, title, description, projects, project }) {
+export function buildJsonLd({ page, lang, title, description, projects }) {
   const graph = [websiteNode(), personNode(lang), eribitechNode()];
 
   if (page !== "notFound") {
-    const url = absoluteUrl(pathFor(page, lang, params));
+    const url = absoluteUrl(pathFor(page, lang));
     const webPage = {
       "@type": PAGE_TYPES[page] ?? "WebPage",
       "@id": `${url}#webpage`,
@@ -182,28 +146,14 @@ export function buildJsonLd({ page, lang, params, title, description, projects, 
       if (!projects?.length) throw new Error("JSON-LD: the projects page must pass its projects to <Seo projects={…}>");
       webPage.hasPart = projects.map((item) => ({
         "@type": "CreativeWork",
-        "@id": `${projectUrl(item.slug, lang)}#project`,
+        "@id": `${url}#${item.id}`,
         name: item.name[lang],
-        url: projectUrl(item.slug, lang),
+        description: item.line[lang],
+        ...(item.link ? { url: item.link } : {}),
+        ...(OWN_ORGS.includes(item.org) ? { author: { "@id": ID.person } } : { contributor: { "@id": ID.person } }),
       }));
     }
     graph.push(webPage);
-
-    // Project pages: the CreativeWork and the BreadcrumbList that mirrors the visible <Breadcrumbs> trail.
-    if (page === "project") {
-      if (!project) throw new Error("JSON-LD: a project page must pass its project to <Seo project={…}>");
-      const nav = common[lang].nav;
-      const work = creativeWorkNode(project, lang, url);
-      webPage.mainEntity = { "@id": work["@id"] };
-      graph.push(work);
-      graph.push(
-        breadcrumbNode([
-          { name: nav.home, url: absoluteUrl(pathFor("home", lang)) },
-          { name: nav.projects, url: absoluteUrl(pathFor("projects", lang)) },
-          { name: project.name[lang], url },
-        ]),
-      );
-    }
   }
 
   return { "@context": "https://schema.org", "@graph": graph };

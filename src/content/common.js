@@ -23,9 +23,9 @@ export const LANG_NAMES = {
 const common = {
   tr: {
     name: "Erdem Süren",
-    title: "Full-Stack Yazılım Mühendisi · .NET & React/Next.js",
-    shortTitle: "Full-Stack Yazılım Mühendisi",
-    focus: "Backend · Frontend · Mobil · DevOps",
+    title: "Product Engineer",
+    stack: ".NET · Next.js · React Native",
+    focus: "Sistem mimarisi · Backend · Mobil · DevOps",
     availability: "Yeni iş fırsatlarına açığım.",
     location: CONTACT.location,
     a11y: {
@@ -72,9 +72,9 @@ const common = {
   },
   en: {
     name: "Erdem Süren",
-    title: "Full-Stack Software Engineer · .NET & React/Next.js",
-    shortTitle: "Full-Stack Software Engineer",
-    focus: "Back end · Front end · Mobile · DevOps",
+    title: "Product Engineer",
+    stack: ".NET · Next.js · React Native",
+    focus: "System architecture · Back end · Mobile · DevOps",
     availability: "Open to new roles.",
     location: "Istanbul, Türkiye",
     a11y: {

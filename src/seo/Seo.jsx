@@ -6,10 +6,10 @@ import { buildJsonLd, serializeJsonLd } from "./jsonld.js";
 import { getMeta, SITE_NAME } from "./meta.js";
 
 const OG_LOCALE = { tr: "tr_TR", en: "en_US" };
-// Describes what the OG image shows (public/og/og-{tr,en}.png: name, title, focus pill, Eribitech role).
+// Describes what the OG image shows (public/og/og-{tr,en}.png: name, title, stack, focus pill, Eribitech role).
 const OG_IMAGE_ALT = {
-  tr: "Erdem Süren · Full-Stack Yazılım Mühendisi · .NET & React/Next.js · Backend, Frontend, Mobil, DevOps · Eribitech Kurucusu",
-  en: "Erdem Süren · Full-Stack Software Engineer · .NET & React/Next.js · Back end, Front end, Mobile, DevOps · Founder, Eribitech",
+  tr: "Erdem Süren · Product Engineer · .NET, Next.js, React Native · Mimari, Backend, Mobil, DevOps · Eribitech Kurucusu",
+  en: "Erdem Süren · Product Engineer · .NET, Next.js, React Native · Architecture, Back end, Mobile, DevOps · Founder, Eribitech",
 };
 const JSONLD_ID = "ld-json";
 
@@ -34,29 +34,27 @@ function useJsonLdScript(json) {
 
 /**
  * Per-page head tags, rendered with React 19's native <title>/<meta>/<link> hoisting.
- * @param {{ page: "home"|"projects"|"project"|"cv"|"contact"|"privacy"|"notFound", params?: object,
- *   projects?: object[], project?: object }} props
- *   Page data for the JSON-LD (see seo/jsonld.js): `projects` on the
- *   projects index (every project), `project` on a project page (that project).
+ * @param {{ page: "home"|"projects"|"cv"|"contact"|"privacy"|"notFound", projects?: object[] }} props
+ *   Page data for the JSON-LD (see seo/jsonld.js): `projects` on the projects page (every project card).
  */
-export default function Seo({ page, params, projects, project }) {
+export default function Seo({ page, projects }) {
   const lang = useLang();
   const collector = useContext(HeadContext);
   const isNotFound = page === "notFound";
-  const { title, description } = getMeta(page, lang, params);
+  const { title, description } = getMeta(page, lang);
 
-  const url = isNotFound ? null : absoluteUrl(pathFor(page, lang, params));
+  const url = isNotFound ? null : absoluteUrl(pathFor(page, lang));
   const alternates = isNotFound
     ? []
-    : LANGS.map((code) => ({ hrefLang: code, href: absoluteUrl(pathFor(page, code, params)) }));
+    : LANGS.map((code) => ({ hrefLang: code, href: absoluteUrl(pathFor(page, code)) }));
   if (!isNotFound) {
     // x-default -> the English version of the same page: the better fallback for readers of neither language
     // (master plan §D.4/§D.6). scripts/prerender.mjs builds the same set for its checks and the sitemap.
-    alternates.push({ hrefLang: "x-default", href: absoluteUrl(pathFor(page, "en", params)) });
+    alternates.push({ hrefLang: "x-default", href: absoluteUrl(pathFor(page, "en")) });
   }
   const otherLang = LANGS.find((code) => code !== lang);
   const ogImage = absoluteUrl(`/og/og-${lang}.png`);
-  const jsonLd = serializeJsonLd(buildJsonLd({ page, lang, params, title, description, projects, project }));
+  const jsonLd = serializeJsonLd(buildJsonLd({ page, lang, title, description, projects }));
 
   if (collector) {
     // Server render only (see HeadContext.js).

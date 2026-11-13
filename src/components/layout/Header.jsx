@@ -87,7 +87,7 @@ export default function Header() {
   }, [open]);
 
   return (
-    <header ref={headerRef} className="sticky top-0 z-40 border-b border-line">
+    <header ref={headerRef} className="site-header sticky top-0 z-40 border-b border-line">
       {/* Translucent bar background on its own layer: a backdrop-filter on <header> itself would become the
           containing block of the fixed backdrop below and break it. */}
       <div

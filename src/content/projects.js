@@ -1,250 +1,243 @@
-// Projects (TR and EN): a name, one line, short bullets (past tense for done work), the stack.
-// Facts only (no customer, revenue or usage numbers; co-developers unnamed; employer work shows public pages only).
-// - `slug`: same in both languages, never renamed once published (see projectSlugs.js).
-// - `image`: card cover, a key in projectImages.js, or null for a plain name cover.
-// - `screens`: project-page images; screens[i] shows liveUrls[i].
-// - `employer`: work done for an employer (JSON-LD contributor, not author). `featured`: shown on the home page.
+// Projects page (/projeler/, /en/projects/): every project on its own card, one line on what it does.
+// No detail pages: details live in the CV. Facts only; employer work links public pages only.
+// - `id`: the card's anchor on the projects page (#id). Stable once published (the home page links to it).
+// - `kind`: short label, a key of KINDS below.
+// - `image`: cover key in projectImages.js, or null (an ink cover with the name; GitHub items get a terminal cover).
+// - `link`: the public page (live site, store page or repository), or null.
 
-import { PROJECT_SLUGS } from "./projectSlugs.js";
-
-export { PROJECT_SLUGS };
-
-export const PROJECTS = [
+export const PROJECT_GROUPS = [
   {
-    slug: "eribi",
-    org: "Eribitech",
-    featured: true,
-    liveUrls: ["https://eribitech.com", "https://growth.eribitech.com", "https://creative.eribitech.com"],
-    image: "eribi",
-    screens: ["eribi", "eribi-growth", "eribi-creative"],
-    stack: [".NET 8", "YARP", "PostgreSQL 17", "Hangfire", "Next.js", "TanStack Query", "GitHub Actions"],
-    name: { tr: "Eribi", en: "Eribi" },
-    line: {
-      tr: "Üç ürünlü platform: e-ticaret, Eribi Growth, Eribi Creative.",
-      en: "Three-product platform: e-commerce, Eribi Growth, Eribi Creative.",
-    },
-    role: { tr: "Kurucu", en: "Founder" },
-    period: { tr: "2025 – Günümüz", en: "2025 – present" },
-    points: {
-      tr: [
-        "Mikroservis mimarisi: YARP API gateway arkasında 9 servis.",
-        "Çok kiracılı yapı: kiracı başına veritabanı.",
-        "Otomatik mağaza kurulumu: veritabanı, DNS, SSL, IIS.",
-        "Ödeme, e-fatura, kargo, pazaryeri ve ERP entegrasyonları.",
-        "SQL Server'dan PostgreSQL 17'ye taşıdım. Boştaki bellek %72'den %60'a indi.",
-        "Eribi Growth: müşteri bulma, site analizi, rapor.",
-        "Eribi Creative: görsel, video ve ses üretimi.",
-      ],
-      en: [
-        "Microservice architecture: 9 services behind a YARP API gateway.",
-        "Multi-tenant: database per tenant.",
-        "Automated store setup: database, DNS, SSL, IIS.",
-        "Payment, e-invoice, shipping, marketplace and ERP integrations.",
-        "Migrated from SQL Server to PostgreSQL 17. Idle memory cut from 72% to 60%.",
-        "Eribi Growth: lead discovery, site analysis, reports.",
-        "Eribi Creative: image, video and audio generation.",
-      ],
-    },
-  },
-  {
-    // Slug kept for link stability; the page covers the CMS and the two BELBİM sites.
-    slug: "belbim-headless-cms",
+    id: "belbim",
     org: "BELBİM",
-    employer: true,
-    featured: true,
-    liveUrls: ["https://belbim.istanbul", "https://istanbulkart.istanbul"],
-    image: "belbim",
-    screens: ["belbim", "istanbulkart"],
-    stack: ["Next.js 15", "React 19", "TypeScript", ".NET", "Umbraco", "Tailwind CSS"],
-    name: { tr: "BELBİM CMS ve siteler", en: "BELBİM CMS and websites" },
-    line: {
-      tr: "Headless CMS, belbim.istanbul ve istanbulkart.istanbul.",
-      en: "Headless CMS, belbim.istanbul and istanbulkart.istanbul.",
-    },
-    role: { tr: "Uzman Yazılım Geliştirici", en: "Software Development Specialist" },
-    period: { tr: "Temmuz 2025 – Günümüz", en: "Jul 2025 – present" },
-    points: {
-      tr: [
-        "Headless CMS'i geliştirdim: modüler monolit, Clean Architecture.",
-        "İki kurumsal siteyi geliştirdim: Next.js 15, SSG ve ISR.",
-        "Türkçe ve İngilizce. WCAG odaklı erişilebilirlik.",
-        "Sunucuların Next.js yapılandırmasını yaptım.",
-        "LDAP / Active Directory ile kimlik doğrulama.",
-        "Şu anda DevOps sistemini kuruyorum.",
-      ],
-      en: [
-        "Built the headless CMS: modular monolith, Clean Architecture.",
-        "Built both corporate websites: Next.js 15, SSG and ISR.",
-        "Turkish and English. WCAG-focused accessibility.",
-        "Configured Next.js on the servers.",
-        "LDAP / Active Directory authentication.",
-        "Now building the DevOps system.",
-      ],
-    },
+    items: [
+      {
+        id: "belbim-cms",
+        kind: "system",
+        image: "belbim-cms",
+        link: null,
+        name: { tr: "Headless CMS", en: "Headless CMS" },
+        line: {
+          tr: "BELBİM'in iki kurumsal sitesini yöneten içerik sistemi.",
+          en: "The content system behind BELBİM's two corporate websites.",
+        },
+      },
+      {
+        id: "belbim-istanbul",
+        kind: "web",
+        image: "belbim",
+        link: "https://belbim.istanbul",
+        name: { tr: "belbim.istanbul", en: "belbim.istanbul" },
+        line: { tr: "BELBİM'in kurumsal web sitesi.", en: "BELBİM's corporate website." },
+      },
+      {
+        id: "istanbulkart-istanbul",
+        kind: "web",
+        image: "istanbulkart",
+        link: "https://istanbulkart.istanbul",
+        name: { tr: "istanbulkart.istanbul", en: "istanbulkart.istanbul" },
+        line: { tr: "İstanbulkart'ın resmi web sitesi.", en: "İstanbulkart's official website." },
+      },
+      {
+        id: "istanbulkart-mobile",
+        kind: "mobile",
+        image: "istanbulkart-mobile",
+        link: null,
+        name: { tr: "İstanbulkart mobil", en: "İstanbulkart mobile" },
+        line: {
+          tr: "İstanbul'un toplu ulaşım kartı uygulaması. React Native.",
+          en: "The app for İstanbul's transit card. React Native.",
+        },
+      },
+    ],
   },
   {
-    slug: "istanbulkart-mobile",
-    org: "BELBİM",
-    employer: true,
-    featured: true,
-    liveUrls: [],
-    image: null,
-    screens: [],
-    stack: [".NET", "RabbitMQ", "Redis", "Hangfire", "FluentValidation"],
-    name: { tr: "İstanbulkart mobil", en: "İstanbulkart mobile" },
-    line: {
-      tr: "İstanbulkart uygulamasının backend'i ve entegrasyonları.",
-      en: "Back end and integrations of the İstanbulkart app.",
-    },
-    role: { tr: "Uzman Yazılım Geliştirici", en: "Software Development Specialist" },
-    period: { tr: "2025 – Günümüz", en: "2025 – present" },
-    points: {
-      tr: [
-        "Sürüm tabanlı içerik senkronizasyonu kurdum.",
-        "RabbitMQ, Redis, Hangfire, FluentValidation.",
-        "Uygulamanın entegrasyonlarını bağladım.",
-        "Güncellemeleri geliştirdim.",
-      ],
-      en: [
-        "Built version-based content synchronization.",
-        "RabbitMQ, Redis, Hangfire, FluentValidation.",
-        "Connected the app's integrations.",
-        "Built its updates.",
-      ],
-    },
-  },
-  {
-    slug: "igdas-field-operations",
-    org: "İGDAŞ",
-    employer: true,
-    liveUrls: [],
-    image: null,
-    screens: [],
-    stack: ["C#", "ASP.NET", "React", "SQL Server", "SAP S/4HANA", "Active Directory"],
-    name: { tr: "Operasyon Otomasyon Sistemi", en: "Operations Automation System" },
-    line: {
-      tr: "İGDAŞ saha ekiplerinin 7/24 kullandığı sistem.",
-      en: "The system İGDAŞ field teams use 24/7.",
-    },
-    role: { tr: "Yazılım Geliştirici", en: "Software Developer" },
-    period: { tr: "Aralık 2023 – Temmuz 2025", en: "Dec 2023 – Jul 2025" },
-    points: {
-      tr: [
-        "Sistemi geliştirdim: C#, ASP.NET, React, SQL Server.",
-        "Durum makinesi iş akışları: talep, atama, uygulama, rapor.",
-        "Kural tabanlı planlama: anlık ve periyodik işler.",
-        "Depo, araç ve saha arasında tutarlı stok akışı.",
-        "SAP S/4HANA entegrasyonu: senkronizasyon, yeniden deneme, hata kurtarma.",
-        "Active Directory kimlik doğrulama. Veri yoğun SQL raporları.",
-      ],
-      en: [
-        "Built the system: C#, ASP.NET, React, SQL Server.",
-        "State-machine workflows: intake, assignment, execution, report.",
-        "Rule-based scheduling: on-demand and recurring jobs.",
-        "Consistent inventory flows across depots, vehicles and the field.",
-        "SAP S/4HANA integration: sync, retries, failure recovery.",
-        "Active Directory authentication. Data-heavy SQL reports.",
-      ],
-    },
-  },
-  {
-    slug: "igdas-tmt",
-    org: "İGDAŞ",
-    employer: true,
-    liveUrls: [],
-    image: null,
-    screens: [],
-    stack: ["C#", "ASP.NET", "SQL Server"],
-    name: { tr: "Tıbbi Malzeme Takip (TMT)", en: "Medical Supply Tracking (TMT)" },
-    line: {
-      tr: "İGDAŞ revir randevusu ve tıbbi malzeme takibi.",
-      en: "İGDAŞ infirmary appointments and medical supply tracking.",
-    },
-    role: { tr: "Yazılım Geliştirici", en: "Software Developer" },
-    period: { tr: "2023 – 2025", en: "2023 – 2025" },
-    points: {
-      tr: ["Uygulamayı geliştirdim.", "Revir randevuları.", "Tıbbi malzeme stoğu ve takibi."],
-      en: ["Built the app.", "Infirmary appointments.", "Medical supply stock and tracking."],
-    },
-  },
-  {
-    slug: "devops",
+    id: "eribitech",
     org: "Eribitech",
-    liveUrls: [],
-    image: null,
-    screens: [],
-    stack: ["GitHub Actions", "Windows Server", "IIS", "Cloudflare", "PowerShell", "PM2"],
-    name: { tr: "Altyapı ve DevOps", en: "Infrastructure and DevOps" },
-    line: {
-      tr: "Kendi sunucularım. Test ve canlı ortam. Otomatik yayın.",
-      en: "My own servers. Test and production. Automated deploys.",
-    },
-    role: { tr: "Kurulum ve işletim", en: "Setup and operation" },
-    period: { tr: "2025 – Günümüz", en: "2025 – present" },
-    points: {
-      tr: [
-        "Test ve canlı Windows sunucularını kurdum.",
-        "Ağı yapılandırdım: Cloudflare Tunnel, DNS, SSL.",
-        "100+ GitHub Actions iş akışı. Self-hosted runner'lar.",
-        "Yedekleme ve geri yükleme tatbikatı.",
-        "Riskli değişiklik özellik bayrağı arkasında. Tek ayarla geri alınır.",
-        "20+ uygulama bu düzende çalışıyor. Kod ajanları (Claude Code) da.",
-      ],
-      en: [
-        "Set up the test and production Windows servers.",
-        "Configured the network: Cloudflare Tunnel, DNS, SSL.",
-        "100+ GitHub Actions workflows. Self-hosted runners.",
-        "Backups and restore drills.",
-        "Risky changes sit behind feature flags. One switch rolls them back.",
-        "20+ applications run on this setup. So do coding agents (Claude Code).",
-      ],
-    },
+    items: [
+      {
+        id: "eribi",
+        kind: "platform",
+        image: "eribi",
+        link: "https://eribitech.com",
+        name: { tr: "Eribi", en: "Eribi" },
+        line: {
+          tr: "Ajanslar için e-ticaret platformu: mağaza, ödeme, kargo, e-fatura.",
+          en: "E-commerce platform for agencies: stores, payments, shipping, e-invoices.",
+        },
+      },
+      {
+        id: "eribi-growth",
+        kind: "webapp",
+        image: "eribi-growth",
+        link: "https://growth.eribitech.com",
+        name: { tr: "Eribi Growth", en: "Eribi Growth" },
+        line: { tr: "Müşteri bulma, site analizi ve rapor aracı.", en: "Lead discovery, site analysis and reports." },
+      },
+      {
+        id: "eribi-creative",
+        kind: "webapp",
+        image: "eribi-creative",
+        link: "https://creative.eribitech.com",
+        name: { tr: "Eribi Creative", en: "Eribi Creative" },
+        line: { tr: "Görsel, video ve ses üretim aracı.", en: "Image, video and audio production." },
+      },
+      {
+        id: "devops",
+        kind: "system",
+        image: "devops",
+        link: null,
+        name: { tr: "Altyapı ve DevOps", en: "Infrastructure and DevOps" },
+        line: {
+          tr: "Kendi sunucularım: test ve canlı ortam, otomatik yayın.",
+          en: "My own servers: test and production, automated deploys.",
+        },
+      },
+    ],
+  },
+  {
+    id: "igdas",
+    org: "İGDAŞ",
+    items: [
+      {
+        id: "igdas-field-operations",
+        kind: "system",
+        image: "igdas-field-operations",
+        link: null,
+        name: { tr: "Operasyon Otomasyon Sistemi", en: "Operations Automation System" },
+        line: {
+          tr: "Saha ekiplerinin iş emri, planlama ve stok sistemi. 7/24.",
+          en: "Work orders, scheduling and inventory for field teams. 24/7.",
+        },
+      },
+      {
+        id: "igdas-tmt",
+        kind: "system",
+        image: "igdas-tmt",
+        link: null,
+        name: { tr: "Tıbbi Malzeme Takip (TMT)", en: "Medical Supply Tracking (TMT)" },
+        line: {
+          tr: "Revir randevuları ve tıbbi malzeme takibi.",
+          en: "Infirmary appointments and medical supply tracking.",
+        },
+      },
+    ],
+  },
+  {
+    id: "tiramisu",
+    org: "Tiramisu Studios",
+    items: [
+      {
+        id: "drift-max-pro",
+        kind: "game",
+        image: "drift-max-pro",
+        link: "https://play.google.com/store/apps/details?id=com.tiramisu.driftmax2",
+        name: { tr: "Drift Max Pro", en: "Drift Max Pro" },
+        line: { tr: "Mobil drift yarış oyunu. 120M+ indirme.", en: "Mobile drift racing game. 120M+ downloads." },
+      },
+      {
+        id: "drift-max-city",
+        kind: "game",
+        image: "drift-max-city",
+        link: "https://play.google.com/store/apps/details?id=tr.com.tiramisu.driftmaxcity",
+        name: { tr: "Drift Max City", en: "Drift Max City" },
+        line: { tr: "Şehirde geçen drift yarış oyunu. 25M+ indirme.", en: "Drift racing in the city. 25M+ downloads." },
+      },
+    ],
+  },
+  {
+    id: "github",
+    org: "GitHub",
+    items: [
+      {
+        id: "net-api",
+        kind: "code",
+        image: null,
+        repo: "NetCoreApiWeb",
+        link: "https://github.com/erdestre/NetCoreApiWeb-NLayer-CleanArchitectureBestPractices",
+        name: { tr: ".NET 8 Web API", en: ".NET 8 Web API" },
+        line: {
+          tr: "Katmanlı mimaride örnek API: doğrulama, hata yönetimi, audit.",
+          en: "Reference API in N-layer architecture: validation, error handling, auditing.",
+        },
+      },
+      {
+        id: "reactivities",
+        kind: "code",
+        image: null,
+        repo: "Reactivities",
+        link: "https://github.com/erdestre/Reactivities",
+        name: { tr: "Reactivities", en: "Reactivities" },
+        line: { tr: "Etkinlik uygulaması: .NET API ve React istemci.", en: "Activities app: .NET API and React client." },
+      },
+      {
+        id: "city-surfers",
+        kind: "game",
+        image: null,
+        repo: "CitySurfers",
+        link: "https://github.com/erdestre/Unity-CitySurfers",
+        name: { tr: "City Surfers", en: "City Surfers" },
+        line: { tr: "Unity'de sonsuz koşu oyunu. 3 kişilik ekip.", en: "Endless runner in Unity. A team of three." },
+      },
+      {
+        id: "car-project",
+        kind: "game",
+        image: null,
+        repo: "Car-Project",
+        link: "https://github.com/erdestre/Unity-Car-Project",
+        name: { tr: "Car Project", en: "Car Project" },
+        line: {
+          tr: "Unity'de araba yarışı: kontrolcü, yarışlar, yükseltme marketi.",
+          en: "Car racing in Unity: controller, races, upgrade market.",
+        },
+      },
+    ],
   },
 ];
 
-// The route table reads the slug list from projectSlugs.js; both must name the same projects in the same order.
-if (PROJECTS.map((project) => project.slug).join() !== PROJECT_SLUGS.join()) {
-  throw new Error("src/content/projects.js and src/content/projectSlugs.js list different projects");
+export const PROJECTS = PROJECT_GROUPS.flatMap((group) => group.items.map((item) => ({ ...item, org: group.org })));
+
+// Home page "Selected work": these ids, in this order.
+const FEATURED_IDS = ["eribi", "istanbulkart-mobile", "belbim-istanbul"];
+export const FEATURED_PROJECTS = FEATURED_IDS.map((id) => PROJECTS.find((project) => project.id === id));
+
+if (new Set(PROJECTS.map((project) => project.id)).size !== PROJECTS.length || FEATURED_PROJECTS.includes(undefined)) {
+  throw new Error("src/content/projects.js: project ids must be unique and FEATURED_IDS must exist");
 }
 
-export function getProject(slug) {
-  if (typeof slug !== "string") return null;
-  const key = slug.toLowerCase();
-  return PROJECTS.find((project) => project.slug === key) ?? null;
+export const KINDS = {
+  web: { tr: "Web sitesi", en: "Website" },
+  webapp: { tr: "Web uygulaması", en: "Web app" },
+  mobile: { tr: "Mobil uygulama", en: "Mobile app" },
+  platform: { tr: "Platform", en: "Platform" },
+  system: { tr: "Sistem", en: "System" },
+  game: { tr: "Oyun", en: "Game" },
+  code: { tr: "Açık kaynak", en: "Open source" },
+};
+
+// Label of a project's public link: the store or GitHub by name, otherwise the site's host name.
+export function linkLabel(url) {
+  const host = new URL(url).host;
+  if (host === "play.google.com") return "Google Play";
+  if (host === "github.com") return "GitHub";
+  return host;
 }
 
-export const FEATURED_PROJECTS = PROJECTS.filter((project) => project.featured);
-
-// Page copy for /projeler/ and /en/projects/ and the labels of the project pages.
+// Page copy for /projeler/ and /en/projects/.
 const projects = {
   tr: {
-    heading: "Projeler",
-    intro: "Geliştirdiğim ve kurduğum sistemler.",
+    heading: "Çalıştığım projeler",
+    intro: "Ayrıntılar CV'de.",
+    cv: "CV",
     // Card thumbnail alt. {host} = the live site's host name.
     shot: "{host} ana sayfası",
-    labels: {
-      did: "Neler yaptım",
-      stack: "Teknolojiler",
-      screens: "Ekran görüntüleri",
-    },
-    cta: {
-      title: "Bir pozisyon mu var?",
-      button: "İletişim",
-    },
+    cta: { title: "Bir pozisyon mu var?", button: "İletişim" },
   },
   en: {
-    heading: "Projects",
-    intro: "Systems I built and run.",
+    heading: "Projects I worked on",
+    intro: "Details are in the CV.",
+    cv: "CV",
     shot: "{host} home page",
-    labels: {
-      did: "What I did",
-      stack: "Stack",
-      screens: "Screenshots",
-    },
-    cta: {
-      title: "Hiring?",
-      button: "Contact",
-    },
+    cta: { title: "Hiring?", button: "Contact" },
   },
 };
 

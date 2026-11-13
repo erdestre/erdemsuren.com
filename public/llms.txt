@@ -1,28 +1,28 @@
 # Erdem Süren
 
-> Full-Stack Software Engineer · .NET & React/Next.js. Back end, front end, mobile, DevOps. Founder of Eribitech. İstanbul, Türkiye.
+> Product Engineer · .NET, Next.js, React Native. System architecture, back end, mobile, DevOps. Founder of Eribitech. İstanbul, Türkiye.
 
-- BELBİM, Software Development Specialist: built the headless CMS (modular monolith, Clean Architecture), belbim.istanbul and istanbulkart.istanbul (Next.js 15), the servers' Next.js configuration, and version-based content sync in the İstanbulkart mobile back end (RabbitMQ, Redis, Hangfire, FluentValidation). Now building the DevOps system.
-- Eribitech, Founder: Eribi, a three-product platform (e-commerce, Eribi Growth, Eribi Creative) on a microservice architecture (9 services behind YARP).
+- Builds systems end to end: architecture, back end, web, mobile, servers and network.
+- BELBİM, Software Development Specialist: built the headless CMS (modular monolith, Clean Architecture), belbim.istanbul and istanbulkart.istanbul (Next.js 15) and the servers' Next.js configuration. İstanbulkart mobile app (React Native): connected the integrations and built the updates; in its back end, version-based content sync with RabbitMQ, Redis, Hangfire and FluentValidation. Now building the DevOps system.
+- Eribitech, Founder: Eribi (e-commerce), Eribi Growth and Eribi Creative on a microservice architecture (9 services behind YARP).
 - İGDAŞ, Software Developer: built the Operations Automation System (24/7, field teams) and the Medical Supply Tracking (TMT) app. SAP S/4HANA integration.
-- Sets up servers and networks: Windows Server, IIS, Cloudflare, 100+ GitHub Actions workflows.
+- Tiramisu Studios, Game Developer: Drift Max Pro (120M+ downloads) and Drift Max City.
 
 Turkish at https://erdemsuren.com/, English under https://erdemsuren.com/en/.
 
 ## Pages
 
-- [Projects](https://erdemsuren.com/en/projects/)
+- [Projects I worked on](https://erdemsuren.com/en/projects/): one card per project, one line each
 - [CV](https://erdemsuren.com/en/cv/) (PDF: https://erdemsuren.com/files/erdem-suren-cv-en.pdf)
 - [Contact](https://erdemsuren.com/en/contact/): erdemsurentr@gmail.com
 
 ## Projects
 
-- [Eribi](https://erdemsuren.com/en/projects/eribi/): e-commerce, Growth and Creative (founder)
-- [BELBİM CMS and websites](https://erdemsuren.com/en/projects/belbim-headless-cms/): headless CMS, belbim.istanbul, istanbulkart.istanbul
-- [İstanbulkart mobile](https://erdemsuren.com/en/projects/istanbulkart-mobile/): back end and integrations
-- [Operations Automation System](https://erdemsuren.com/en/projects/igdas-field-operations/): İGDAŞ, 24/7 field operations
-- [Medical Supply Tracking](https://erdemsuren.com/en/projects/igdas-tmt/): İGDAŞ infirmary and supplies
-- [Infrastructure and DevOps](https://erdemsuren.com/en/projects/devops/): own servers, network, automated deploys
+- BELBİM: Headless CMS · belbim.istanbul (https://belbim.istanbul) · istanbulkart.istanbul (https://istanbulkart.istanbul) · İstanbulkart mobile (React Native)
+- Eribitech: Eribi (https://eribitech.com) · Eribi Growth (https://growth.eribitech.com) · Eribi Creative (https://creative.eribitech.com) · Infrastructure and DevOps
+- İGDAŞ: Operations Automation System · Medical Supply Tracking (TMT)
+- Tiramisu Studios: Drift Max Pro · Drift Max City
+- GitHub: .NET 8 Web API, Reactivities, City Surfers, Car Project (https://github.com/erdestre)
 
 ## Elsewhere
 
