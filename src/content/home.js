@@ -12,7 +12,16 @@ const home = {
     // Accessible name of the animated system map in the hero.
     mapLabel:
       "Kurduğum sistemlerin şeması: React Native ve Next.js istemcileri, YARP gateway, .NET servisleri, RabbitMQ, Redis ve PostgreSQL; GitHub Actions ile IIS ve Cloudflare'a yayın.",
-    map: { services: ".NET servisleri", deploy: "yayın" },
+    map: { services: ".NET servisleri", deploy: "yayın", window: "sistem haritası" },
+    stats: {
+      label: "Rakamlarla",
+      items: [
+        { value: 5, suffix: " yıl", label: "yazılım deneyimi" },
+        { value: 120, suffix: "M+", label: "Drift Max Pro indirmesi" },
+        { value: 9, suffix: "", label: "mikroservis, YARP arkasında" },
+        { value: 100, suffix: "+", label: "CI/CD iş akışı" },
+      ],
+    },
     work: { title: "Öne çıkan işler" },
     layers: {
       title: "Uçtan uca sistem",
@@ -85,7 +94,16 @@ const home = {
     ],
     mapLabel:
       "Map of the systems I build: React Native and Next.js clients, a YARP gateway, .NET services, RabbitMQ, Redis and PostgreSQL; delivery with GitHub Actions to IIS and Cloudflare.",
-    map: { services: ".NET services", deploy: "deploy" },
+    map: { services: ".NET services", deploy: "deploy", window: "system map" },
+    stats: {
+      label: "In numbers",
+      items: [
+        { value: 5, suffix: " years", label: "of software development" },
+        { value: 120, suffix: "M+", label: "Drift Max Pro downloads" },
+        { value: 9, suffix: "", label: "microservices behind YARP" },
+        { value: 100, suffix: "+", label: "CI/CD workflows" },
+      ],
+    },
     work: { title: "Selected work" },
     layers: {
       title: "End-to-end systems",

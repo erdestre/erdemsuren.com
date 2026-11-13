@@ -14,6 +14,19 @@ export default function Layout({ children }) {
     document.documentElement.lang = lang;
   }, [lang]);
 
+  // Spotlight cards (.spotlight in index.css): the light follows the pointer. One passive listener for the page.
+  useEffect(() => {
+    const onMove = (event) => {
+      const card = event.target instanceof Element ? event.target.closest(".spotlight") : null;
+      if (!card) return;
+      const box = card.getBoundingClientRect();
+      card.style.setProperty("--mx", `${event.clientX - box.left}px`);
+      card.style.setProperty("--my", `${event.clientY - box.top}px`);
+    };
+    window.addEventListener("pointermove", onMove, { passive: true });
+    return () => window.removeEventListener("pointermove", onMove);
+  }, []);
+
   return (
     <div className="flex min-h-dvh flex-col">
       <SkipLink />

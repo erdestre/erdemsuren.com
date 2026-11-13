@@ -94,6 +94,8 @@ export default function Header() {
         aria-hidden="true"
         className="absolute inset-0 -z-10 bg-paper/95 supports-[backdrop-filter]:bg-paper/90 supports-[backdrop-filter]:backdrop-blur-md"
       />
+      {/* Reading progress: a cobalt → violet → lime hairline that fills as the page scrolls (index.css). */}
+      <div aria-hidden="true" className="scroll-progress" />
       <Container className="flex h-16 items-center justify-between gap-3">
         <Link
           to={pathFor("home", lang)}

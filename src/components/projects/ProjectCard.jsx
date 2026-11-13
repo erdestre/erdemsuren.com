@@ -30,10 +30,20 @@ export default function ProjectCard({ project, to, headingLevel = 3, priority = 
   const name = project.name[lang];
 
   return (
-    <Card as="article" interactive={Boolean(to || external)} className={cx("group flex flex-col overflow-hidden", className)}>
+    <Card as="article" interactive={Boolean(to || external)} className={cx("group relative flex flex-col overflow-hidden", className)}>
+      {project.accent ? (
+        <span
+          aria-hidden="true"
+          className="absolute inset-x-0 top-0 z-10 h-[3px] opacity-80 transition-opacity group-hover:opacity-100"
+          style={{ background: `linear-gradient(90deg, var(--color-${project.accent}), transparent)` }}
+        />
+      ) : null}
       <ProjectCover project={project} alt={alt} sizes={COVER_SIZES} priority={priority} className="border-b border-line" />
       <div className="flex flex-1 flex-col p-5 sm:p-6">
-        <p className="font-mono text-xs text-muted">
+        <p className="flex items-center gap-2 font-mono text-xs text-muted">
+          {project.accent ? (
+            <span aria-hidden="true" className="size-1.5 rounded-full" style={{ backgroundColor: `var(--color-${project.accent})` }} />
+          ) : null}
           {project.org} · {KINDS[project.kind][lang]}
         </p>
         <Heading className="mt-2 text-lg font-semibold tracking-tight text-ink">

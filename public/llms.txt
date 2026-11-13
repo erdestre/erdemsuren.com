@@ -22,7 +22,7 @@ Turkish at https://erdemsuren.com/, English under https://erdemsuren.com/en/.
 - Eribitech: Eribi (https://eribitech.com) · Eribi Growth (https://growth.eribitech.com) · Eribi Creative (https://creative.eribitech.com) · Infrastructure and DevOps
 - İGDAŞ: Operations Automation System · Medical Supply Tracking (TMT)
 - Tiramisu Studios: Drift Max Pro · Drift Max City
-- GitHub: .NET 8 Web API, Reactivities, City Surfers, Car Project (https://github.com/erdestre)
+- GitHub: erdemsuren.com (this site, https://github.com/erdestre/erdemsuren.com) · .NET 8 Web API (https://github.com/erdestre/NetCoreApiWeb-NLayer-CleanArchitectureBestPractices)
 
 ## Elsewhere
 

@@ -20,7 +20,11 @@ export default function Footer() {
   const match = matchRoute(pathname);
 
   return (
-    <footer className="border-t border-line bg-surface">
+    <footer className="relative border-t border-line bg-surface">
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 -top-px h-px bg-[linear-gradient(90deg,transparent,var(--color-accent),var(--color-violet),var(--color-signal),transparent)] opacity-70"
+      />
       <Container className="flex flex-col gap-4 py-8 text-sm sm:flex-row sm:items-center sm:justify-between">
         <p className="text-muted">
           © {__BUILD_YEAR__} {t.name}

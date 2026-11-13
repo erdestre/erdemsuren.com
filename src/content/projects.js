@@ -4,11 +4,13 @@
 // - `kind`: short label, a key of KINDS below.
 // - `image`: cover key in projectImages.js, or null (an ink cover with the name; GitHub items get a terminal cover).
 // - `link`: the public page (live site, store page or repository), or null.
+// - group `accent`: decorative colour of the group (dot, card top bar): a colour token name from index.css.
 
 export const PROJECT_GROUPS = [
   {
     id: "belbim",
     org: "BELBİM",
+    accent: "accent",
     items: [
       {
         id: "belbim-cms",
@@ -53,6 +55,7 @@ export const PROJECT_GROUPS = [
   {
     id: "eribitech",
     org: "Eribitech",
+    accent: "violet",
     items: [
       {
         id: "eribi",
@@ -97,6 +100,7 @@ export const PROJECT_GROUPS = [
   {
     id: "igdas",
     org: "İGDAŞ",
+    accent: "amber",
     items: [
       {
         id: "igdas-field-operations",
@@ -125,6 +129,7 @@ export const PROJECT_GROUPS = [
   {
     id: "tiramisu",
     org: "Tiramisu Studios",
+    accent: "rose",
     items: [
       {
         id: "drift-max-pro",
@@ -147,7 +152,20 @@ export const PROJECT_GROUPS = [
   {
     id: "github",
     org: "GitHub",
+    accent: "signal",
     items: [
+      {
+        id: "erdemsuren-com",
+        kind: "code",
+        image: null,
+        repo: "erdemsuren.com",
+        link: "https://github.com/erdestre/erdemsuren.com",
+        name: { tr: "erdemsuren.com", en: "erdemsuren.com" },
+        line: {
+          tr: "Bu sitenin kaynağı: React 19, Vite, Tailwind, statik prerender.",
+          en: "Source of this site: React 19, Vite, Tailwind, static prerender.",
+        },
+      },
       {
         id: "net-api",
         kind: "code",
@@ -160,41 +178,13 @@ export const PROJECT_GROUPS = [
           en: "Reference API in N-layer architecture: validation, error handling, auditing.",
         },
       },
-      {
-        id: "reactivities",
-        kind: "code",
-        image: null,
-        repo: "Reactivities",
-        link: "https://github.com/erdestre/Reactivities",
-        name: { tr: "Reactivities", en: "Reactivities" },
-        line: { tr: "Etkinlik uygulaması: .NET API ve React istemci.", en: "Activities app: .NET API and React client." },
-      },
-      {
-        id: "city-surfers",
-        kind: "game",
-        image: null,
-        repo: "CitySurfers",
-        link: "https://github.com/erdestre/Unity-CitySurfers",
-        name: { tr: "City Surfers", en: "City Surfers" },
-        line: { tr: "Unity'de sonsuz koşu oyunu. 3 kişilik ekip.", en: "Endless runner in Unity. A team of three." },
-      },
-      {
-        id: "car-project",
-        kind: "game",
-        image: null,
-        repo: "Car-Project",
-        link: "https://github.com/erdestre/Unity-Car-Project",
-        name: { tr: "Car Project", en: "Car Project" },
-        line: {
-          tr: "Unity'de araba yarışı: kontrolcü, yarışlar, yükseltme marketi.",
-          en: "Car racing in Unity: controller, races, upgrade market.",
-        },
-      },
     ],
   },
 ];
 
-export const PROJECTS = PROJECT_GROUPS.flatMap((group) => group.items.map((item) => ({ ...item, org: group.org })));
+export const PROJECTS = PROJECT_GROUPS.flatMap((group) =>
+  group.items.map((item) => ({ ...item, org: group.org, accent: group.accent })),
+);
 
 // Home page "Selected work": these ids, in this order.
 const FEATURED_IDS = ["eribi", "istanbulkart-mobile", "belbim-istanbul"];

@@ -16,7 +16,14 @@ export default function Contact() {
   const c = common[lang];
 
   const channels = [
-    { key: "email", label: c.contactLabels.email, value: CONTACT.email, href: `mailto:${CONTACT.email}`, Icon: FiMail },
+    {
+      key: "email",
+      label: c.contactLabels.email,
+      value: CONTACT.email,
+      href: `mailto:${CONTACT.email}`,
+      Icon: FiMail,
+      tint: "accent",
+    },
     {
       key: "whatsapp",
       label: c.contactLabels.whatsapp,
@@ -24,6 +31,7 @@ export default function Contact() {
       href: CONTACT.whatsapp,
       Icon: FaWhatsapp,
       external: true,
+      tint: "success",
     },
     {
       key: "linkedin",
@@ -33,6 +41,7 @@ export default function Contact() {
       Icon: FiLinkedin,
       external: true,
       me: true,
+      tint: "violet",
     },
     {
       key: "github",
@@ -42,6 +51,7 @@ export default function Contact() {
       Icon: FiGithub,
       external: true,
       me: true,
+      tint: "ink",
     },
   ];
 
@@ -52,15 +62,24 @@ export default function Contact() {
 
       <Section as="div">
         <ul className="grid max-w-3xl grid-cols-1 gap-4 sm:grid-cols-2">
-          {channels.map(({ key, label, value, href, Icon, external, me }) => (
+          {channels.map(({ key, label, value, href, Icon, external, me, tint }) => (
             <li key={key}>
               <SmartLink
                 href={href}
                 external={external}
                 me={me}
-                className="group flex min-h-20 items-center gap-4 rounded-xl border border-line bg-surface px-5 py-4 transition-colors hover:border-accent"
+                className="spotlight group relative flex min-h-20 items-center gap-4 overflow-hidden rounded-xl border border-line bg-surface px-5 py-4 transition-[translate,border-color,box-shadow] duration-200 hover:-translate-y-1 hover:border-accent hover:shadow-[0_24px_60px_-28px_rgb(39_71_208/0.5)] motion-reduce:hover:translate-y-0"
               >
-                <Icon aria-hidden="true" className="size-6 shrink-0 text-accent" />
+                <span
+                  aria-hidden="true"
+                  className="grid size-11 shrink-0 place-items-center rounded-xl"
+                  style={{
+                    color: `var(--color-${tint})`,
+                    backgroundColor: `color-mix(in srgb, var(--color-${tint}) 10%, transparent)`,
+                  }}
+                >
+                  <Icon className="size-5" />
+                </span>
                 <span className="min-w-0 flex-1">
                   <span className="block text-sm text-muted">{label}</span>
                   <span className="block text-lg font-medium text-ink [overflow-wrap:anywhere] group-hover:text-accent">
