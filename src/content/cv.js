@@ -13,7 +13,7 @@ const cv = {
     pdf: { tr: "PDF (Türkçe)", en: "PDF (İngilizce)" },
     summaryTitle: "Özet",
     summary:
-      "4 yıla yakın deneyim; 3 yılı İGDAŞ ve BELBİM'de kurumsal sistemlerde. Backend, frontend, mobil ve DevOps. Sunucuları kurdum, ağı yapılandırdım, yazılımı canlıya aldım. Eribitech'i kurdum: 3 ürünlü, mikroservis mimarili bir platform.",
+      "5 yıllık yazılım deneyimi. İGDAŞ ve BELBİM'de kurumsal sistemler geliştirdim. Backend, frontend, mobil ve DevOps. Sunucuları kurdum, ağı yapılandırdım, yazılımı canlıya aldım. Eribitech'i kurdum: 3 ürünlü, mikroservis mimarili bir platform.",
     experienceTitle: "Deneyim",
     experience: [
       {
@@ -93,7 +93,7 @@ const cv = {
     pdf: { tr: "PDF (Turkish)", en: "PDF (English)" },
     summaryTitle: "Summary",
     summary:
-      "Almost 4 years of experience; 3 on enterprise systems at İGDAŞ and BELBİM. Back end, front end, mobile, DevOps. I set up servers, configured networks and shipped to production. Founder of Eribitech: a three-product microservice platform.",
+      "5 years of software development. Built enterprise systems at İGDAŞ and BELBİM. Back end, front end, mobile, DevOps. I set up servers, configured networks and shipped to production. Founder of Eribitech: a three-product microservice platform.",
     experienceTitle: "Experience",
     experience: [
       {
