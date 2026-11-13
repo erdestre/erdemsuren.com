@@ -1,5 +1,6 @@
 import { FiArrowRight } from "react-icons/fi";
 import ctaTexture from "../assets/home/cta-texture-2000.webp";
+import systemLoop from "../assets/home/system-loop-dark.mp4";
 import Avatar from "../components/Avatar.jsx";
 import Stats from "../components/home/Stats.jsx";
 import SystemLoop from "../components/home/SystemLoop.jsx";
@@ -156,7 +157,7 @@ export default function Home() {
             onInk
             className="reveal"
           />
-          <SystemLoop className="reveal mt-10 shadow-[0_30px_80px_-30px_rgb(39_71_208/0.7)]" />
+          <SystemLoop video={systemLoop} className="reveal mt-10 shadow-[0_30px_80px_-30px_rgb(39_71_208/0.7)]" />
           <div className="relative mt-12">
             <svg
               aria-hidden="true"
