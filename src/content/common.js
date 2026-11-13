@@ -1,26 +1,20 @@
-// Shared copy for every page: identity, navigation, buttons, footer, language toggle, 404 and contact data.
-// Identity and contact follow the owner decisions (scratchpad/foundation-notes/CONTRACTS.md §1).
+// Shared copy for every page: identity, navigation, buttons, 404 and contact data.
 
 export const CONTACT = {
   email: "erdemsurentr@gmail.com",
-  // Owner decision 5: the phone number is never rendered as text. It lives only inside this WhatsApp link, and the
-  // link appears on the Contact and Services pages only.
+  // The phone number is never rendered as text; it lives only inside this WhatsApp link (Contact and Services).
   whatsapp: "https://wa.me/905532641100",
   linkedin: "https://www.linkedin.com/in/erdemsurentr/",
   github: "https://github.com/erdestre",
   location: "İstanbul, Türkiye",
 };
 
-// English copy writes the city without the Turkish dotted capital (master plan §F.0).
-const LOCATION_EN = "Istanbul, Türkiye";
-
 export const PERSON = {
   name: "Erdem Süren",
   alternateName: "Erdem Suren",
 };
 
-// Each language's name in that language. The toggle link reads "EN" + sr-only " – English", so its accessible
-// name starts with the visible label (WCAG 2.5.3) and is spoken in the target language (the link carries lang).
+// Each language's name in that language (the TR/EN toggle's sr-only text).
 export const LANG_NAMES = {
   tr: "Türkçe",
   en: "English",
@@ -32,8 +26,7 @@ const common = {
     title: "Full-Stack Yazılım Mühendisi · .NET & React/Next.js",
     shortTitle: "Full-Stack Yazılım Mühendisi",
     descriptor: "Yapay zekâ ile uçtan uca",
-    role: "Eribitech Kurucusu",
-    availability: "Tam zamanlı pozisyonlara ve seçili freelance projelere açığım.",
+    availability: "İşe ve freelance projelere açığım.",
     location: CONTACT.location,
     a11y: {
       skipToContent: "İçeriğe geç",
@@ -52,44 +45,30 @@ const common = {
       home: "Ana sayfa",
       projects: "Projeler",
       services: "Hizmetler",
-      about: "Hakkımda",
       cv: "CV",
       contact: "İletişim",
       privacy: "Gizlilik",
     },
     cta: {
-      workWithMe: "Birlikte çalışalım",
-      contact: "İletişime geçin",
-      projects: "Projeleri inceleyin",
+      contact: "İletişim",
+      projects: "Projeler",
       allProjects: "Tüm projeler",
-      services: "Hizmetleri inceleyin",
-      allServices: "Tüm hizmetler",
-      cv: "CV'yi görüntüleyin",
-      about: "Hakkımda",
-      email: "E-posta gönderin",
-      contactForm: "İletişim formu",
+      cv: "CV",
+      email: "E-posta",
       linkedin: "LinkedIn",
-      whatsapp: "WhatsApp'tan yazın",
-      details: "Projeyi inceleyin",
-      visitSite: "Siteyi ziyaret edin",
-      backToProjects: "Tüm projelere dön",
+      whatsapp: "WhatsApp",
+      next: "Sonraki proje",
     },
     contactLabels: {
       email: "E-posta",
       whatsapp: "WhatsApp",
       linkedin: "LinkedIn",
       github: "GitHub",
-      location: "Konum",
-    },
-    footer: {
-      pagesHeading: "Sayfalar",
-      elsewhereHeading: "Bağlantılar",
-      contactHeading: "İletişim",
     },
     notFound: {
-      eyebrow: "Hata 404",
-      heading: "Aradığınız sayfa bulunamadı",
-      text: "Sayfa taşınmış ya da kaldırılmış olabilir. Aşağıdaki bağlantılardan devam edebilirsiniz.",
+      eyebrow: "404",
+      heading: "Sayfa bulunamadı",
+      text: "Bu sayfa yok ya da taşındı.",
     },
   },
   en: {
@@ -97,9 +76,8 @@ const common = {
     title: "Full-Stack Software Engineer · .NET & React/Next.js",
     shortTitle: "Full-Stack Software Engineer",
     descriptor: "AI-native, end to end",
-    role: "Founder, Eribitech",
-    availability: "Open to full-time roles and selected freelance projects.",
-    location: LOCATION_EN,
+    availability: "Open to roles and freelance projects.",
+    location: "Istanbul, Türkiye",
     a11y: {
       skipToContent: "Skip to content",
       mainNav: "Main menu",
@@ -117,44 +95,30 @@ const common = {
       home: "Home",
       projects: "Projects",
       services: "Services",
-      about: "About",
       cv: "CV",
       contact: "Contact",
       privacy: "Privacy",
     },
     cta: {
-      workWithMe: "Work with me",
-      contact: "Get in touch",
-      projects: "See my work",
+      contact: "Contact",
+      projects: "Projects",
       allProjects: "All projects",
-      services: "View services",
-      allServices: "All services",
-      cv: "View CV",
-      about: "About me",
-      email: "Email me",
-      contactForm: "Contact form",
+      cv: "CV",
+      email: "Email",
       linkedin: "LinkedIn",
-      whatsapp: "Message on WhatsApp",
-      details: "View project",
-      visitSite: "Visit the site",
-      backToProjects: "Back to all projects",
+      whatsapp: "WhatsApp",
+      next: "Next project",
     },
     contactLabels: {
       email: "Email",
       whatsapp: "WhatsApp",
       linkedin: "LinkedIn",
       github: "GitHub",
-      location: "Location",
-    },
-    footer: {
-      pagesHeading: "Pages",
-      elsewhereHeading: "Elsewhere",
-      contactHeading: "Contact",
     },
     notFound: {
-      eyebrow: "Error 404",
+      eyebrow: "404",
       heading: "Page not found",
-      text: "The page may have moved or no longer exists. You can continue from one of the links below.",
+      text: "This page does not exist or has moved.",
     },
   },
 };

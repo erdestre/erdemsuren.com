@@ -1,16 +1,13 @@
-import projectsCopy from "../../content/projects.js";
 import { PROJECT_IMAGES } from "../../content/projectImages.js";
 import { useLang } from "../../i18n/LanguageContext.jsx";
 import { cx } from "../../lib/cx.js";
-import { pick } from "./pick.js";
 import ProjectImage from "./ProjectImage.jsx";
 
 const COVER_RATIO = "aspect-[1568/698]"; // same ratio as the screenshots, so every card cover lines up
 
 /**
- * Card cover: the project's real screenshot when it has one, otherwise a typographic cover (decorative, aria-hidden;
- * the card's title carries the meaning). Employer work and practices get an ink cover, the prototype a paper one.
- * Lime is used only for the AI marker (`cover.ai`).
+ * Card cover: the project's screenshot, or a plain ink block with its name (decorative, aria-hidden; the card title
+ * carries the meaning).
  */
 export default function ProjectCover({ project, alt = "", sizes, priority = false, className }) {
   const lang = useLang();
@@ -32,39 +29,9 @@ export default function ProjectCover({ project, alt = "", sizes, priority = fals
     );
   }
 
-  const cover = project.cover ?? { label: project.title[lang] };
-  const draft = project.type === "prototype";
   return (
-    <div
-      aria-hidden="true"
-      className={cx(
-        "relative flex flex-col justify-between overflow-hidden p-5 sm:p-6",
-        COVER_RATIO,
-        draft ? "bg-paper text-ink" : "bg-ink text-on-ink",
-        className,
-      )}
-    >
-      <div className={cx("absolute inset-0 bg-dot-grid", draft ? "opacity-100" : "opacity-15")} />
-      <div className="relative flex items-center justify-between gap-3">
-        {cover.kicker ? (
-          <span className={cx("truncate font-mono text-xs", draft ? "text-muted" : "text-on-ink-muted")}>
-            {pick(cover.kicker, lang)}
-          </span>
-        ) : null}
-        {cover.ai ? (
-          <span className="shrink-0 rounded-full bg-signal px-2 py-0.5 font-mono text-xs font-medium text-ink">
-            {projectsCopy[lang].ai}
-          </span>
-        ) : null}
-      </div>
-      <div className="relative">
-        <p className="font-display text-xl font-semibold tracking-display sm:text-2xl">{pick(cover.label, lang)}</p>
-        {cover.flow ? (
-          <p className={cx("mt-1.5 font-mono text-xs", draft ? "text-muted" : "text-accent-on-ink")}>
-            {pick(cover.flow, lang)}
-          </p>
-        ) : null}
-      </div>
+    <div aria-hidden="true" className={cx("flex items-end bg-ink p-5 text-on-ink sm:p-6", COVER_RATIO, className)}>
+      <p className="font-display text-xl font-semibold tracking-display sm:text-2xl">{project.name[lang]}</p>
     </div>
   );
 }

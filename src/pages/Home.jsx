@@ -1,29 +1,106 @@
-import AiSection from "../components/home/AiSection.jsx";
-import CtaBand from "../components/home/CtaBand.jsx";
-import ExperienceTimeline from "../components/home/ExperienceTimeline.jsx";
-import HomeHero from "../components/home/HomeHero.jsx";
-import ProofStrip from "../components/home/ProofStrip.jsx";
-import SelectedWork from "../components/home/SelectedWork.jsx";
-import ServicesTeaser from "../components/home/ServicesTeaser.jsx";
-import StackByDepth from "../components/home/StackByDepth.jsx";
+import { FiArrowRight } from "react-icons/fi";
+import Avatar from "../components/Avatar.jsx";
+import ProjectCard from "../components/projects/ProjectCard.jsx";
+import { ArrowLink, ButtonLink, Container, Section, SectionHeading, SmartLink } from "../components/ui/index.js";
+import common, { CONTACT } from "../content/common.js";
+import home from "../content/home.js";
+import { FEATURED_PROJECTS } from "../content/projects.js";
+import { useLang } from "../i18n/LanguageContext.jsx";
+import { keepDots } from "../lib/text.js";
+import { pathFor } from "../routes.js";
 import Seo from "../seo/Seo.jsx";
 
-/**
- * Home (/ and /en/), sections in master plan §B.2 order: hero + Now card, proof strip, selected work, how I work
- * with AI (ink band), what I build, experience, stack by depth, dual CTA band. Copy: src/content/home.js.
- */
+/** Home (/ and /en/): hero, selected work, experience, contact band. Copy: src/content/home.js. */
 export default function Home() {
+  const lang = useLang();
+  const t = home[lang];
+  const c = common[lang];
+
   return (
     <>
       <Seo page="home" />
-      <HomeHero />
-      <ProofStrip />
-      <SelectedWork />
-      <AiSection />
-      <ServicesTeaser />
-      <ExperienceTimeline />
-      <StackByDepth />
-      <CtaBand />
+
+      <section aria-labelledby="hero-title">
+        <Container className="pt-12 pb-16 sm:pt-20 sm:pb-24 lg:pt-24 lg:pb-28">
+          <Avatar size={72} alt={c.a11y.portrait} loading="eager" className="ring-1 ring-line" />
+          <h1 id="hero-title" className="mt-8 text-ink">
+            <span className="block text-display">{c.name}</span>{" "}
+            <span className="mt-3 block text-[clamp(1.25rem,2.4vw,1.75rem)] leading-tight font-medium text-ink-soft">
+              {keepDots(c.title)}
+            </span>
+          </h1>
+          <p className="mt-6 max-w-2xl text-lg text-ink-soft sm:text-xl">{t.lead}</p>
+          <p className="mt-4 flex items-center gap-2.5 text-[15px] font-medium text-ink">
+            <span aria-hidden="true" className="size-2 shrink-0 rounded-full bg-success" />
+            {c.availability}
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <ButtonLink to={pathFor("projects", lang)} size="lg">
+              {c.cta.projects}
+              <FiArrowRight aria-hidden="true" className="size-4" />
+            </ButtonLink>
+            <ButtonLink to={pathFor("contact", lang)} size="lg" variant="secondary">
+              {c.cta.contact}
+            </ButtonLink>
+          </div>
+        </Container>
+      </section>
+
+      <Section tone="surface" labelledBy="work-title">
+        <SectionHeading
+          id="work-title"
+          title={t.work.title}
+          action={<ArrowLink to={pathFor("projects", lang)}>{c.cta.allProjects}</ArrowLink>}
+        />
+        <ul className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {FEATURED_PROJECTS.map((project) => (
+            <li key={project.slug} className="flex min-w-0">
+              <ProjectCard project={project} className="w-full" />
+            </li>
+          ))}
+        </ul>
+      </Section>
+
+      <Section labelledBy="experience-title">
+        <SectionHeading
+          id="experience-title"
+          title={t.experience.title}
+          action={<ArrowLink to={pathFor("cv", lang)}>{c.cta.cv}</ArrowLink>}
+        />
+        <ul className="mt-8 divide-y divide-line border-y border-line">
+          {t.experience.items.map((item) => (
+            <li
+              key={item.key}
+              className="flex flex-col gap-1 py-4 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
+            >
+              <p>
+                <span className="font-semibold text-ink">{item.org}</span>
+                <span className="text-muted"> · {item.role}</span>
+              </p>
+              <p className="shrink-0 font-mono text-sm text-muted">{item.period}</p>
+            </li>
+          ))}
+        </ul>
+      </Section>
+
+      <Section tone="ink" labelledBy="cta-title">
+        <h2 id="cta-title" className="text-h2 font-semibold text-on-ink">
+          {t.cta.title}
+        </h2>
+        <p className="mt-3 text-lg text-on-ink-muted">{t.cta.text}</p>
+        <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+          <ButtonLink to={pathFor("contact", lang)} size="lg">
+            {c.cta.contact}
+            <FiArrowRight aria-hidden="true" className="size-4" />
+          </ButtonLink>
+          <SmartLink
+            href={`mailto:${CONTACT.email}`}
+            className="link-on-ink inline-flex min-h-11 items-center font-medium [overflow-wrap:anywhere]"
+          >
+            {CONTACT.email}
+          </SmartLink>
+        </div>
+      </Section>
     </>
   );
 }

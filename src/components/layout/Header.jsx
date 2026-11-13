@@ -134,7 +134,7 @@ export default function Header() {
           <div className="hidden lg:block">
             {/* Contact is not in the menu list; this CTA is its menu item, so it carries aria-current. */}
             <ButtonLink to={pathFor("contact", lang)} size="sm" aria-current={currentFor("contact", match)}>
-              {t.cta.workWithMe}
+              {t.cta.contact}
             </ButtonLink>
           </div>
           <button
@@ -203,7 +203,7 @@ export default function Header() {
             onClick={() => setOpenOn(null)}
             className="mt-4 mb-2 w-full"
           >
-            {t.cta.workWithMe}
+            {t.cta.contact}
           </ButtonLink>
         </Container>
       </div>

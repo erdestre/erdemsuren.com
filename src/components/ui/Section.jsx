@@ -1,8 +1,8 @@
 import { cx } from "../../lib/cx.js";
 import Container from "./Container.jsx";
 
-// ink = an "ink band": on-ink text; inside it use text-on-ink-muted, link-on-ink, Button variant "inverse",
-// Badge tone "signal". Focus rings switch to the lime signal automatically (src/index.css).
+// ink = an "ink band": on-ink text; inside it use text-on-ink-muted, link-on-ink and Button variant "inverse".
+// Focus rings switch to the lime signal automatically (src/index.css).
 const TONES = {
   default: "",
   surface: "border-y border-line bg-surface",

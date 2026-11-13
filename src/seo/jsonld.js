@@ -2,11 +2,11 @@
 // discovery/fact-sheet.md and those decisions:
 // - every page: WebSite, Person (jobTitle = the site title's short form, worksFor BELBİM, alumniOf Bahçeşehir,
 //   sameAs LinkedIn + GitHub only) and Organization Eribitech (founder → Person);
-// - per page: ProfilePage (about), CollectionPage + hasPart (projects), ContactPage (contact), CreativeWork
-//   (case studies), OfferCatalog of Service nodes (services). BreadcrumbList only where a breadcrumb is visible
-//   (the case studies: Home › Projects › case study), so the markup never describes content readers cannot see.
+// - per page: ProfilePage (cv), CollectionPage + hasPart (projects), ContactPage (contact), CreativeWork
+//   (project pages), OfferCatalog of Service nodes (services). BreadcrumbList only where a breadcrumb is visible
+//   (project pages: Home › Projects › project), so the markup never describes content readers cannot see.
 // Page data comes from the page itself, so this module (main bundle) never imports page copy: the Services page
-// passes its service cards (<Seo offers>), the projects index its project list (<Seo projects>) and a case study its
+// passes its service cards (<Seo offers>), the projects index its project list (<Seo projects>) and a project page its
 // project (<Seo project>).
 // Never: ProfessionalService/LocalBusiness, Review/AggregateRating, FAQPage, SearchAction, telephone, Medium.
 import common, { CONTACT, PERSON } from "../content/common.js";
@@ -57,8 +57,7 @@ const PAGE_TYPES = {
   projects: "CollectionPage",
   project: "WebPage",
   services: "WebPage",
-  about: "ProfilePage",
-  cv: "WebPage",
+  cv: "ProfilePage",
   contact: "ContactPage",
   privacy: "WebPage",
 };
@@ -191,24 +190,23 @@ function offerCatalogNode(lang, items = []) {
 // Host name of an absolute URL ("https://darkpost.com.tr" → "darkpost.com.tr").
 const hostOf = (url) => new URL(url).host;
 
-// The case study is a write-up by Erdem about a product or site (`about`), never that site itself (no sameAs: the
-// Eribitech Organization already owns https://eribitech.com). Employer and team work (group "employer": BELBİM,
-// İGDAŞ, Drift Max) lists him as a contributor, not as the author of the product. A case study about several live
-// sites (`liveUrls`: BELBİM's belbim.istanbul and istanbulkart.istanbul) is `about` each of them.
+// The project page is a write-up by Erdem about a product or site (`about`), never that site itself (no sameAs: the
+// Eribitech Organization already owns https://eribitech.com). Employer work (`employer`: BELBİM, İGDAŞ) lists him
+// as a contributor, not as the author. A page about several live sites (`liveUrls`) is `about` each of them.
 function creativeWorkNode(project, lang, url) {
   const image = project.image ? PROJECT_IMAGES[project.image] : null;
   const node = {
     "@type": "CreativeWork",
     "@id": `${url}#project`,
-    name: project.title[lang],
-    description: project.summary[lang],
+    name: project.name[lang],
+    description: project.line[lang],
     url,
     inLanguage: lang,
-    ...(project.group === "employer" ? { contributor: { "@id": ID.person } } : { author: { "@id": ID.person } }),
+    ...(project.employer ? { contributor: { "@id": ID.person } } : { author: { "@id": ID.person } }),
     keywords: project.stack.join(", "),
   };
   if (image) node.image = absoluteUrl(image.large);
-  const sites = (project.liveUrls ?? (project.liveUrl ? [project.liveUrl] : [])).map((site) => ({
+  const sites = (project.liveUrls ?? []).map((site) => ({
     "@type": "WebSite",
     name: hostOf(site),
     url: site,
@@ -222,7 +220,7 @@ function creativeWorkNode(project, lang, url) {
  *   offers?: object[], projects?: object[], project?: object }} input
  *   offers   – services page: the service cards ({ key, title, text }) for the OfferCatalog;
  *   projects – projects index: every project (slug, title) for CollectionPage.hasPart;
- *   project  – case study: the project (slug, title, summary, stack, image, liveUrl, liveUrls) for CreativeWork.
+ *   project  – project page: the project (slug, name, line, stack, image, liveUrls, employer) for CreativeWork.
  */
 export function buildJsonLd({ page, lang, params, title, description, offers, projects, project }) {
   const isServices = page === "services";
@@ -244,21 +242,21 @@ export function buildJsonLd({ page, lang, params, title, description, offers, pr
       isPartOf: { "@id": ID.website },
     };
     if (page === "home") webPage.about = { "@id": ID.person };
-    if (page === "about" || page === "contact" || page === "cv") webPage.mainEntity = { "@id": ID.person };
+    if (page === "contact" || page === "cv") webPage.mainEntity = { "@id": ID.person };
     if (page === "projects") {
       if (!projects?.length) throw new Error("JSON-LD: the projects page must pass its projects to <Seo projects={…}>");
       webPage.hasPart = projects.map((project) => ({
         "@type": "CreativeWork",
         "@id": `${projectUrl(project.slug, lang)}#project`,
-        name: project.title[lang],
+        name: project.name[lang],
         url: projectUrl(project.slug, lang),
       }));
     }
     graph.push(webPage);
 
-    // Case studies: the CreativeWork and the BreadcrumbList that mirrors the visible <Breadcrumbs> trail.
+    // Project pages: the CreativeWork and the BreadcrumbList that mirrors the visible <Breadcrumbs> trail.
     if (page === "project") {
-      if (!project) throw new Error("JSON-LD: a case study must pass its project to <Seo project={…}>");
+      if (!project) throw new Error("JSON-LD: a project page must pass its project to <Seo project={…}>");
       const nav = common[lang].nav;
       const work = creativeWorkNode(project, lang, url);
       webPage.mainEntity = { "@id": work["@id"] };
@@ -267,7 +265,7 @@ export function buildJsonLd({ page, lang, params, title, description, offers, pr
         breadcrumbNode([
           { name: nav.home, url: absoluteUrl(pathFor("home", lang)) },
           { name: nav.projects, url: absoluteUrl(pathFor("projects", lang)) },
-          { name: project.title[lang], url },
+          { name: project.name[lang], url },
         ]),
       );
     }

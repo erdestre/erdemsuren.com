@@ -1,14 +1,10 @@
-import { Fragment, lazy, Suspense } from "react";
+import { Fragment, Suspense } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Layout from "./components/layout/Layout.jsx";
 import { LanguageProvider } from "./i18n/LanguageContext.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import { PAGES } from "./pages/registry.js";
 import { langFromPath, LANGS, ROUTES } from "./routes.js";
-
-// Dev server only: every registered diagram (src/components/diagrams). The import sits in a branch that production
-// builds drop, so neither the page nor the diagrams registry reaches the main bundle.
-const DiagramsPreview = import.meta.env.DEV ? lazy(() => import("./components/diagrams/DiagramsPreview.jsx")) : null;
 
 // No router in here: the client entry wraps App in <BrowserRouter>, the server entry in <StaticRouter>.
 // Pages are code-split (src/pages/registry.js). The Suspense boundary is the same on the server and the client;
@@ -30,7 +26,6 @@ export default function App() {
                 ))}
               </Fragment>
             ))}
-            {DiagramsPreview ? <Route path="/__diagrams/" element={<DiagramsPreview />} /> : null}
             <Route path="/en/*" element={<NotFound />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

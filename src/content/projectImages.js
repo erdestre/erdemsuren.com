@@ -1,5 +1,4 @@
-// Screenshot set per image key, used by `image` in src/content/projects.js (card cover) and by `screens` in
-// src/content/projectDetails.js (case-study screens).
+// Screenshot set per image key, used by `image` (card cover) and `screens` (project page) in src/content/projects.js.
 // Real screenshots of the live sites' public home pages (October 2026), 1568 × 698 and 800 × 356 WebP, all with the
 // same aspect ratio. Where an original captured the browser scrollbar on its right edge, it is cropped out (1554 × 692
 // crop, then resized).

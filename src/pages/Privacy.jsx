@@ -7,7 +7,7 @@ import Seo from "../seo/Seo.jsx";
 function Block({ block }) {
   if (block.list) {
     return (
-      <ul className="mt-4 list-disc space-y-2 pl-5 text-ink-soft marker:text-muted">
+      <ul className="mt-3 list-disc space-y-1 pl-5 text-ink-soft marker:text-muted">
         {block.list.map((item) => (
           <li key={item}>{item}</li>
         ))}
@@ -16,7 +16,7 @@ function Block({ block }) {
   }
   if (block.email) {
     return (
-      <p className="mt-4 text-ink-soft">
+      <p className="mt-3 text-ink-soft">
         {block.email}{" "}
         <SmartLink
           href={`mailto:${CONTACT.email}`}
@@ -28,10 +28,10 @@ function Block({ block }) {
       </p>
     );
   }
-  return <p className="mt-4 text-ink-soft">{block.p}</p>;
+  return <p className="mt-3 text-ink-soft">{block.p}</p>;
 }
 
-/** Privacy notice / KVKK aydınlatma metni for the contact form (master plan §F.8). Linked from the footer and the form. */
+/** Privacy notice / KVKK aydınlatma metni. Linked from the footer. */
 export default function Privacy() {
   const lang = useLang();
   const t = privacy[lang];
@@ -39,17 +39,17 @@ export default function Privacy() {
   return (
     <>
       <Seo page="privacy" />
-      <PageHeader eyebrow={t.eyebrow} title={t.heading} intro={t.intro}>
+      <PageHeader title={t.heading} intro={t.intro}>
         <p className="mt-6 font-mono text-xs text-muted">
           {t.updatedLabel}: <time dateTime={PRIVACY_UPDATED}>{t.updated}</time>
         </p>
       </PageHeader>
 
       <Section as="div">
-        <div className="max-w-measure space-y-12">
+        <div className="max-w-measure space-y-8">
           {t.sections.map((section) => (
             <section key={section.id} aria-labelledby={`privacy-${section.id}`}>
-              <h2 id={`privacy-${section.id}`} className="text-2xl font-semibold text-ink">
+              <h2 id={`privacy-${section.id}`} className="text-xl font-semibold text-ink">
                 {section.title}
               </h2>
               {section.blocks.map((block, index) => (

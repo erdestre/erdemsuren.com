@@ -34,10 +34,10 @@ function useJsonLdScript(json) {
 
 /**
  * Per-page head tags, rendered with React 19's native <title>/<meta>/<link> hoisting.
- * @param {{ page: "home"|"about"|"projects"|"project"|"services"|"cv"|"contact"|"privacy"|"notFound", params?: object,
+ * @param {{ page: "home"|"projects"|"project"|"services"|"cv"|"contact"|"privacy"|"notFound", params?: object,
  *   offers?: object[], projects?: object[], project?: object }} props
  *   Page data for the JSON-LD (see seo/jsonld.js): `offers` on services (its service cards), `projects` on the
- *   projects index (every project), `project` on a case study (that project).
+ *   projects index (every project), `project` on a project page (that project).
  */
 export default function Seo({ page, params, offers, projects, project }) {
   const lang = useLang();
@@ -75,9 +75,9 @@ export default function Seo({ page, params, offers, projects, project }) {
       {alternates.map((alt) => (
         <link key={alt.hrefLang} rel="alternate" hrefLang={alt.hrefLang} href={alt.href} />
       ))}
-      <meta property="og:type" content={page === "about" ? "profile" : "website"} />
-      {page === "about" ? <meta property="profile:first_name" content="Erdem" /> : null}
-      {page === "about" ? <meta property="profile:last_name" content="Süren" /> : null}
+      <meta property="og:type" content={page === "cv" ? "profile" : "website"} />
+      {page === "cv" ? <meta property="profile:first_name" content="Erdem" /> : null}
+      {page === "cv" ? <meta property="profile:last_name" content="Süren" /> : null}
       <meta property="og:site_name" content={SITE_NAME} />
       <meta property="og:locale" content={OG_LOCALE[lang]} />
       <meta property="og:locale:alternate" content={OG_LOCALE[otherLang]} />
