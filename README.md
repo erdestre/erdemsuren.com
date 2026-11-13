@@ -30,8 +30,6 @@ scripts/        prerender and quality gates
 public/         icons, Open Graph images, CV PDFs, llms.txt, web.config
 ```
 
-Built with AI coding agents (Claude Code) under Erdem's review.
-
 ---
 
 Content (texts, photos, CV) © Erdem Süren; code may be read for reference.

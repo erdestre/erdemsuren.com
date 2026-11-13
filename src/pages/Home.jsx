@@ -3,14 +3,14 @@ import Avatar from "../components/Avatar.jsx";
 import ProjectCard from "../components/projects/ProjectCard.jsx";
 import { ArrowLink, ButtonLink, Container, Section, SectionHeading, SmartLink } from "../components/ui/index.js";
 import common, { CONTACT } from "../content/common.js";
-import home from "../content/home.js";
+import home, { HOME_STACK } from "../content/home.js";
 import { FEATURED_PROJECTS } from "../content/projects.js";
 import { useLang } from "../i18n/LanguageContext.jsx";
 import { keepDots } from "../lib/text.js";
 import { pathFor } from "../routes.js";
 import Seo from "../seo/Seo.jsx";
 
-/** Home (/ and /en/): hero, selected work, experience, contact band. Copy: src/content/home.js. */
+/** Home (/ and /en/): hero, selected work, experience, stack, contact band. Copy: src/content/home.js. */
 export default function Home() {
   const lang = useLang();
   const t = home[lang];
@@ -29,8 +29,16 @@ export default function Home() {
               {keepDots(c.title)}
             </span>
           </h1>
-          <p className="mt-6 max-w-2xl text-lg text-ink-soft sm:text-xl">{t.lead}</p>
-          <p className="mt-4 flex items-center gap-2.5 text-[15px] font-medium text-ink">
+          <p className="mt-4 font-mono text-base font-medium text-accent sm:text-lg">{keepDots(c.focus)}</p>
+          <ul className="mt-6 max-w-3xl space-y-2 text-lg text-ink-soft">
+            {t.lead.map((line) => (
+              <li key={line} className="flex gap-3">
+                <span aria-hidden="true" className="mt-[0.7em] size-1.5 shrink-0 rounded-full bg-accent" />
+                <span>{line}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-6 flex items-center gap-2.5 text-[15px] font-medium text-ink">
             <span aria-hidden="true" className="size-2 shrink-0 rounded-full bg-success" />
             {c.availability}
           </p>
@@ -39,8 +47,8 @@ export default function Home() {
               {c.cta.projects}
               <FiArrowRight aria-hidden="true" className="size-4" />
             </ButtonLink>
-            <ButtonLink to={pathFor("contact", lang)} size="lg" variant="secondary">
-              {c.cta.contact}
+            <ButtonLink to={pathFor("cv", lang)} size="lg" variant="secondary">
+              {c.cta.cv}
             </ButtonLink>
           </div>
         </Container>
@@ -69,15 +77,26 @@ export default function Home() {
         />
         <ul className="mt-8 divide-y divide-line border-y border-line">
           {t.experience.items.map((item) => (
-            <li
-              key={item.key}
-              className="flex flex-col gap-1 py-4 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
-            >
-              <p>
-                <span className="font-semibold text-ink">{item.org}</span>
-                <span className="text-muted"> · {item.role}</span>
-              </p>
-              <p className="shrink-0 font-mono text-sm text-muted">{item.period}</p>
+            <li key={item.key} className="py-4">
+              <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+                <p>
+                  <span className="font-semibold text-ink">{item.org}</span>
+                  <span className="text-muted"> · {item.role}</span>
+                </p>
+                <p className="shrink-0 font-mono text-sm text-muted">{item.period}</p>
+              </div>
+              <p className="mt-1 text-ink-soft">{item.text}</p>
+            </li>
+          ))}
+        </ul>
+      </Section>
+
+      <Section tone="surface" labelledBy="stack-title">
+        <SectionHeading id="stack-title" title={t.stack.title} />
+        <ul aria-label={t.stack.title} className="mt-6 flex flex-wrap gap-2">
+          {HOME_STACK.map((item) => (
+            <li key={item} className="rounded-lg border border-line bg-paper px-3 py-1.5 font-mono text-sm text-ink">
+              {item}
             </li>
           ))}
         </ul>

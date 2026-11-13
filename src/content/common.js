@@ -2,7 +2,7 @@
 
 export const CONTACT = {
   email: "erdemsurentr@gmail.com",
-  // The phone number is never rendered as text; it lives only inside this WhatsApp link (Contact and Services).
+  // The phone number is never rendered as text; it lives only inside this WhatsApp link (Contact page).
   whatsapp: "https://wa.me/905532641100",
   linkedin: "https://www.linkedin.com/in/erdemsurentr/",
   github: "https://github.com/erdestre",
@@ -25,8 +25,8 @@ const common = {
     name: "Erdem Süren",
     title: "Full-Stack Yazılım Mühendisi · .NET & React/Next.js",
     shortTitle: "Full-Stack Yazılım Mühendisi",
-    descriptor: "Yapay zekâ ile uçtan uca",
-    availability: "İşe ve freelance projelere açığım.",
+    focus: "Backend · Frontend · Mobil · DevOps",
+    availability: "Yeni iş fırsatlarına açığım.",
     location: CONTACT.location,
     a11y: {
       skipToContent: "İçeriğe geç",
@@ -44,7 +44,6 @@ const common = {
     nav: {
       home: "Ana sayfa",
       projects: "Projeler",
-      services: "Hizmetler",
       cv: "CV",
       contact: "İletişim",
       privacy: "Gizlilik",
@@ -75,8 +74,8 @@ const common = {
     name: "Erdem Süren",
     title: "Full-Stack Software Engineer · .NET & React/Next.js",
     shortTitle: "Full-Stack Software Engineer",
-    descriptor: "AI-native, end to end",
-    availability: "Open to roles and freelance projects.",
+    focus: "Back end · Front end · Mobile · DevOps",
+    availability: "Open to new roles.",
     location: "Istanbul, Türkiye",
     a11y: {
       skipToContent: "Skip to content",
@@ -94,7 +93,6 @@ const common = {
     nav: {
       home: "Home",
       projects: "Projects",
-      services: "Services",
       cv: "CV",
       contact: "Contact",
       privacy: "Privacy",

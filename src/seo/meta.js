@@ -9,60 +9,46 @@ export const META = {
     tr: {
       title: "Erdem Süren | Full-Stack Yazılım Mühendisi · .NET & React",
       description:
-        ".NET, React/Next.js ve SQL ile uçtan uca iş yazılımı. Yapay zekâ ajanlarıyla çalışıyorum. Projeler, CV ve iletişim.",
+        "Backend, frontend, mobil ve DevOps. BELBİM'de CMS, iki kurumsal site ve İstanbulkart mobil backend. Eribitech'in kurucusu.",
     },
     en: {
       title: "Erdem Süren | Full-Stack Software Engineer · .NET & React",
       description:
-        "Business software end to end with .NET, React/Next.js and SQL. I work with AI coding agents. Projects, CV and contact.",
+        "Back end, front end, mobile and DevOps. CMS, two websites and the İstanbulkart mobile back end at BELBİM. Founder of Eribitech.",
     },
   },
   projects: {
     tr: {
       title: "Projeler | Erdem Süren",
       description:
-        "Eribi e-ticaret platformu, BELBİM siteleri, İGDAŞ saha operasyonları, yapay zekâ ile geliştirme ve müşteri siteleri.",
+        "Eribi, BELBİM CMS ve siteleri, İstanbulkart mobil, İGDAŞ Operasyon Otomasyon Sistemi, Tıbbi Malzeme Takip, altyapı ve DevOps.",
     },
     en: {
       title: "Projects | Erdem Süren",
       description:
-        "The Eribi e-commerce platform, BELBİM websites, İGDAŞ field operations, AI-native delivery and client websites.",
-    },
-  },
-  services: {
-    tr: {
-      title: "Freelance Yazılım Geliştirme (.NET, React) | Erdem Süren",
-      description:
-        "İşletmeler ve ajanslar için web uygulaması, e-ticaret, entegrasyon ve yapay zekâ özellikleri. Ücretsiz görüşme, sabit teklif.",
-    },
-    en: {
-      title: "Freelance Full-Stack Developer (.NET, React) | Erdem Süren",
-      description:
-        "Web apps, e-commerce, integrations and AI features for businesses and agencies. Free intro call, fixed written quote.",
+        "Eribi, the BELBİM CMS and websites, İstanbulkart mobile, the İGDAŞ Operations Automation System, Medical Supply Tracking, DevOps.",
     },
   },
   cv: {
     tr: {
       title: "Erdem Süren CV (Özgeçmiş) | Full-Stack Yazılım Mühendisi",
       description:
-        "BELBİM, Eribitech, İGDAŞ ve Tiramisu Studios deneyimi. .NET, React/Next.js, SQL ve DevOps. Tek sayfa, PDF olarak da var.",
+        "BELBİM, Eribitech, İGDAŞ ve Tiramisu Studios. .NET, RabbitMQ, Redis, React, Next.js, SQL ve DevOps. Tek sayfa, PDF olarak da var.",
     },
     en: {
       title: "Erdem Süren CV | Full-Stack Software Engineer (.NET, React)",
       description:
-        "Experience at BELBİM, Eribitech, İGDAŞ and Tiramisu Studios. .NET, React/Next.js, SQL and DevOps. One page, also as a PDF.",
+        "BELBİM, Eribitech, İGDAŞ and Tiramisu Studios. .NET, RabbitMQ, Redis, React, Next.js, SQL and DevOps. One page, also as a PDF.",
     },
   },
   contact: {
     tr: {
       title: "İletişim | Erdem Süren",
-      description:
-        "İş fırsatları ve freelance projeler için e-posta, WhatsApp, LinkedIn veya GitHub. İstanbul, Türkiye.",
+      description: "İş fırsatları için e-posta, WhatsApp, LinkedIn veya GitHub. Erdem Süren, İstanbul, Türkiye.",
     },
     en: {
       title: "Contact | Erdem Süren",
-      description:
-        "Email, WhatsApp, LinkedIn or GitHub, for roles and freelance projects. Based in Istanbul, Türkiye.",
+      description: "Email, WhatsApp, LinkedIn or GitHub, for new roles. Erdem Süren, based in Istanbul, Türkiye.",
     },
   },
   privacy: {
@@ -93,74 +79,72 @@ export const META = {
 export const PROJECT_META = {
   eribi: {
     tr: {
-      title: "Eribi: Çok Kiracılı E-Ticaret Platformu | Erdem Süren",
+      title: "Eribi: E-Ticaret, Growth ve Creative | Erdem Süren",
       description:
-        "Ajanslar için çok kiracılı e-ticaret platformu: .NET 8, Next.js, PostgreSQL. Ödeme, e-fatura, kargo ve pazaryeri entegrasyonları.",
+        "Üç ürünlü platform: e-ticaret, Eribi Growth, Eribi Creative. Mikroservis mimarisi, YARP, .NET 8, PostgreSQL, Next.js.",
     },
     en: {
-      title: "Eribi: Multi-Tenant Commerce Platform | Erdem Süren",
+      title: "Eribi: E-Commerce, Growth and Creative | Erdem Süren",
       description:
-        "Multi-tenant e-commerce platform for agencies: .NET 8, Next.js, PostgreSQL. Payment, e-invoice, shipping and marketplace integrations.",
+        "A three-product platform: e-commerce, Eribi Growth, Eribi Creative. Microservices, YARP, .NET 8, PostgreSQL, Next.js.",
     },
   },
   "belbim-headless-cms": {
     tr: {
-      title: "belbim.istanbul ve istanbulkart.istanbul | Erdem Süren",
+      title: "BELBİM Headless CMS ve Kurumsal Siteler | Erdem Süren",
       description:
-        "BELBİM'de belbim.istanbul ve istanbulkart.istanbul: Umbraco headless CMS ve Next.js 15. İstanbulkart mobil uygulama ekibi.",
+        "BELBİM'de headless CMS (modüler monolit, Clean Architecture), belbim.istanbul ve istanbulkart.istanbul: Next.js 15.",
     },
     en: {
-      title: "belbim.istanbul and istanbulkart.istanbul | Erdem Süren",
+      title: "BELBİM Headless CMS and Websites | Erdem Süren",
       description:
-        "At BELBİM: belbim.istanbul and istanbulkart.istanbul with an Umbraco headless CMS and Next.js 15. On the İstanbulkart app team.",
+        "At BELBİM: a headless CMS (modular monolith, Clean Architecture), belbim.istanbul and istanbulkart.istanbul with Next.js 15.",
     },
   },
-  "ai-native-delivery": {
+  "istanbulkart-mobile": {
     tr: {
-      title: "Yapay Zekâ Ajanlarıyla Geliştirme | Erdem Süren",
+      title: "İstanbulkart Mobil: Backend ve Entegrasyonlar | Erdem Süren",
       description:
-        "Claude Code ajanları, testler, ayrı test ve canlı sunucular, GitHub Actions ile otomatik yayın. Mimari ve son karar bende.",
+        "İstanbulkart mobil uygulamasının backend'i: sürüm tabanlı içerik senkronizasyonu, RabbitMQ, Redis, Hangfire, FluentValidation.",
     },
     en: {
-      title: "AI-Native Delivery, Self-Hosted | Erdem Süren",
+      title: "İstanbulkart Mobile: Back End and Integrations | Erdem Süren",
       description:
-        "Claude Code agents, tests, separate test and production servers, automated GitHub Actions deploys. I own architecture and release.",
+        "The İstanbulkart mobile app's back end: version-based content sync, RabbitMQ, Redis, Hangfire, FluentValidation, integrations.",
     },
   },
   "igdas-field-operations": {
     tr: {
-      title: "İGDAŞ Saha Operasyonları Otomasyonu | Erdem Süren",
+      title: "İGDAŞ Operasyon Otomasyon Sistemi | Erdem Süren",
       description:
-        "Saha ekiplerinin 7/24 kullandığı platform: durum makineleri, planlama, stok, SAP S/4HANA ve Active Directory entegrasyonu.",
+        "Saha ekiplerinin 7/24 kullandığı sistem: durum makineleri, planlama, stok, SAP S/4HANA ve Active Directory entegrasyonu.",
     },
     en: {
-      title: "İGDAŞ Field Operations Automation | Erdem Süren",
+      title: "İGDAŞ Operations Automation System | Erdem Süren",
       description:
-        "A 24/7 platform for field teams: state machines, scheduling, inventory, SAP S/4HANA and Active Directory integration.",
+        "The system field teams use 24/7: state machines, scheduling, inventory, SAP S/4HANA and Active Directory integration.",
     },
   },
-  darkpost: {
+  "igdas-tmt": {
     tr: {
-      title: "DarkPost Agency Kurumsal Web Sitesi | Erdem Süren",
-      description:
-        "DarkPost Agency için Next.js 16 ile kurumsal site: hizmet ve paket sayfaları, kısa bir mağaza başvuru formu.",
+      title: "İGDAŞ Tıbbi Malzeme Takip (TMT) | Erdem Süren",
+      description: "İGDAŞ için Tıbbi Malzeme Takip uygulaması: revir randevuları, tıbbi malzeme stoğu ve takibi.",
     },
     en: {
-      title: "DarkPost Agency Website | Erdem Süren",
-      description:
-        "Company website for DarkPost Agency with Next.js 16: service and package pages and a short store application form.",
+      title: "İGDAŞ Medical Supply Tracking (TMT) | Erdem Süren",
+      description: "The Medical Supply Tracking app for İGDAŞ: infirmary appointments, medical supply stock and tracking.",
     },
   },
-  "olser-bilisim": {
+  devops: {
     tr: {
-      title: "Olser Bilişim Kurumsal Web Sitesi | Erdem Süren",
+      title: "Altyapı ve DevOps | Erdem Süren",
       description:
-        "Olser Bilişim için kurumsal site ve içerik paneli: React/Vite arayüz, .NET 8 API. Next.js 16 sürümü hazır.",
+        "Kendi test ve canlı sunucularım: Windows Server, IIS, Cloudflare Tunnel, DNS, SSL, 100+ GitHub Actions iş akışı.",
     },
     en: {
-      title: "Olser Bilişim Company Website | Erdem Süren",
+      title: "Infrastructure and DevOps | Erdem Süren",
       description:
-        "Company website and content panel for Olser Bilişim: React/Vite front end and .NET 8 API. A Next.js 16 version is ready.",
+        "My own test and production servers: Windows Server, IIS, Cloudflare Tunnel, DNS, SSL, 100+ GitHub Actions workflows.",
     },
   },
 };

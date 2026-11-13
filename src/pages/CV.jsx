@@ -69,19 +69,6 @@ export default function CV() {
             </ol>
           </CvBlock>
 
-          <CvBlock title={t.clientsTitle}>
-            <ul className="space-y-2 text-ink-soft">
-              {t.clients.map((client) => (
-                <li key={client.name}>
-                  <Link to={projectPath(client.slug)} className={`font-semibold text-ink ${ORG_LINK}`}>
-                    {client.name}
-                  </Link>
-                  : {client.text}
-                </li>
-              ))}
-            </ul>
-          </CvBlock>
-
           <CvBlock title={t.skillsTitle}>
             <dl className="space-y-2">
               {t.skills.map((group) => (
@@ -101,10 +88,7 @@ export default function CV() {
               </h3>
               <p className="shrink-0 font-mono text-sm text-muted">{t.education.period}</p>
             </div>
-          </CvBlock>
-
-          <CvBlock title={t.languagesTitle}>
-            <p className="text-ink-soft">{t.languages}</p>
+            <p className="mt-2 text-ink-soft">{t.extra}</p>
           </CvBlock>
         </div>
       </Section>

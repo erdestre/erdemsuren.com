@@ -6,10 +6,10 @@ import { buildJsonLd, serializeJsonLd } from "./jsonld.js";
 import { getMeta, SITE_NAME } from "./meta.js";
 
 const OG_LOCALE = { tr: "tr_TR", en: "en_US" };
-// Describes what the OG image shows (public/og/og-{tr,en}.png: name, title, descriptor pill, Eribitech role).
+// Describes what the OG image shows (public/og/og-{tr,en}.png: name, title, focus pill, Eribitech role).
 const OG_IMAGE_ALT = {
-  tr: "Erdem Süren · Full-Stack Yazılım Mühendisi · .NET & React/Next.js · Yapay zekâ ile uçtan uca · Eribitech Kurucusu",
-  en: "Erdem Süren · Full-Stack Software Engineer · .NET & React/Next.js · AI-native, end to end · Founder, Eribitech",
+  tr: "Erdem Süren · Full-Stack Yazılım Mühendisi · .NET & React/Next.js · Backend, Frontend, Mobil, DevOps · Eribitech Kurucusu",
+  en: "Erdem Süren · Full-Stack Software Engineer · .NET & React/Next.js · Back end, Front end, Mobile, DevOps · Founder, Eribitech",
 };
 const JSONLD_ID = "ld-json";
 
@@ -34,12 +34,12 @@ function useJsonLdScript(json) {
 
 /**
  * Per-page head tags, rendered with React 19's native <title>/<meta>/<link> hoisting.
- * @param {{ page: "home"|"projects"|"project"|"services"|"cv"|"contact"|"privacy"|"notFound", params?: object,
- *   offers?: object[], projects?: object[], project?: object }} props
- *   Page data for the JSON-LD (see seo/jsonld.js): `offers` on services (its service cards), `projects` on the
+ * @param {{ page: "home"|"projects"|"project"|"cv"|"contact"|"privacy"|"notFound", params?: object,
+ *   projects?: object[], project?: object }} props
+ *   Page data for the JSON-LD (see seo/jsonld.js): `projects` on the
  *   projects index (every project), `project` on a project page (that project).
  */
-export default function Seo({ page, params, offers, projects, project }) {
+export default function Seo({ page, params, projects, project }) {
   const lang = useLang();
   const collector = useContext(HeadContext);
   const isNotFound = page === "notFound";
@@ -56,7 +56,7 @@ export default function Seo({ page, params, offers, projects, project }) {
   }
   const otherLang = LANGS.find((code) => code !== lang);
   const ogImage = absoluteUrl(`/og/og-${lang}.png`);
-  const jsonLd = serializeJsonLd(buildJsonLd({ page, lang, params, title, description, offers, projects, project }));
+  const jsonLd = serializeJsonLd(buildJsonLd({ page, lang, params, title, description, projects, project }));
 
   if (collector) {
     // Server render only (see HeadContext.js).

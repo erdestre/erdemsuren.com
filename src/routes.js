@@ -12,15 +12,14 @@ export const ROUTES = {
   home: { tr: "/", en: "/en/" },
   projects: { tr: "/projeler/", en: "/en/projects/" },
   project: { tr: "/projeler/:slug/", en: "/en/projects/:slug/" },
-  services: { tr: "/hizmetler/", en: "/en/services/" },
   cv: { tr: "/cv/", en: "/en/cv/" },
   contact: { tr: "/iletisim/", en: "/en/contact/" },
   privacy: { tr: "/gizlilik/", en: "/en/privacy/" },
 };
 
 // Page order, used for prerendering, the sitemap and the menus. Every key is indexed.
-// /hakkimda/ and /en/about/ were merged into the CV page (301 in public/web.config).
-export const PAGE_KEYS = ["home", "projects", "services", "cv", "contact", "privacy"];
+// Removed pages redirect in public/web.config (/hakkimda/ → /cv/, /hizmetler/ → /).
+export const PAGE_KEYS = ["home", "projects", "cv", "contact", "privacy"];
 // Header menu (desktop and mobile): the brand links home, contact is the header CTA, privacy is footer-only.
 export const NAV_KEYS = PAGE_KEYS.filter((key) => !["home", "contact", "privacy"].includes(key));
 

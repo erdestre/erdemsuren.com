@@ -10,7 +10,6 @@ export const PAGES = {
   home: lazyPage(() => import("./Home.jsx"), "src/pages/Home.jsx"),
   projects: lazyPage(() => import("./Projects.jsx"), "src/pages/Projects.jsx"),
   project: lazyPage(() => import("./ProjectDetail.jsx"), "src/pages/ProjectDetail.jsx"),
-  services: lazyPage(() => import("./Services.jsx"), "src/pages/Services.jsx"),
   cv: lazyPage(() => import("./CV.jsx"), "src/pages/CV.jsx"),
   contact: lazyPage(() => import("./Contact.jsx"), "src/pages/Contact.jsx"),
   privacy: lazyPage(() => import("./Privacy.jsx"), "src/pages/Privacy.jsx"),
