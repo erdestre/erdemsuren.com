@@ -46,8 +46,8 @@ export const PROJECT_GROUPS = [
         link: null,
         name: { tr: "İstanbulkart mobil", en: "İstanbulkart mobile" },
         line: {
-          tr: "İstanbul'un toplu ulaşım kartı uygulaması. React Native.",
-          en: "The app for İstanbul's transit card. React Native.",
+          tr: "İstanbul'daki tüm toplu taşımada geçen kartın uygulaması; İstanbulkart Plus ile banka kartı gibi de çalışıyor. React Native.",
+          en: "The app of the card used on all of İstanbul's public transport; with İstanbulkart Plus it also works like a bank card. React Native.",
         },
       },
     ],
@@ -109,8 +109,8 @@ export const PROJECT_GROUPS = [
         link: null,
         name: { tr: "Operasyon Otomasyon Sistemi", en: "Operations Automation System" },
         line: {
-          tr: "Saha ekiplerinin iş emri, planlama ve stok sistemi. 7/24.",
-          en: "Work orders, scheduling and inventory for field teams. 24/7.",
+          tr: "İstanbul'daki saha ekiplerinin olaylara müdahale sistemi: 187 Doğalgaz Acil iş emirleri, mobil bildirim, stok. 7/24.",
+          en: "How İstanbul's field teams respond to incidents: 187 gas-emergency work orders, mobile notifications, stock. 24/7.",
         },
       },
       {

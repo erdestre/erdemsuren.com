@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 
 // Big-number strip. The prerendered HTML has the final numbers; on the client, the first time the strip scrolls into
 // view, each number counts up from 0 (skipped under prefers-reduced-motion). Only the text of [data-count] changes.
+// An item with `text` (e.g. "7/24") is shown as is, without counting.
 export default function Stats({ items, label }) {
   const list = useRef(null);
 
@@ -38,15 +39,21 @@ export default function Stats({ items, label }) {
     <ul
       ref={list}
       aria-label={label}
-      className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line shadow-card lg:grid-cols-4"
+      className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line shadow-card lg:grid-cols-3"
     >
       {items.map((item) => (
         <li key={item.label} className="relative bg-surface p-6 sm:p-8">
           <p className="font-display text-[clamp(2.25rem,4.4vw,3.5rem)] leading-none font-semibold tracking-display">
-            <span className="text-gradient tabular-nums" data-count={item.value}>
-              {item.value}
-            </span>
-            <span className="text-gradient">{item.suffix}</span>
+            {item.text ? (
+              <span className="text-gradient">{item.text}</span>
+            ) : (
+              <>
+                <span className="text-gradient tabular-nums" data-count={item.value}>
+                  {item.value}
+                </span>
+                <span className="text-gradient">{item.suffix}</span>
+              </>
+            )}
           </p>
           <p className="mt-3 font-mono text-xs text-muted sm:text-sm">{item.label}</p>
         </li>

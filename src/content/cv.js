@@ -47,7 +47,7 @@ const cv = {
         role: "Yazılım Geliştirici",
         period: "Ara 2023 – Tem 2025",
         points: [
-          "Operasyon Otomasyon Sistemi'ni geliştirdim: saha ekipleri 7/24 kullanıyor.",
+          "Operasyon Otomasyon Sistemi'ni geliştirdim: 187 Doğalgaz Acil ve saha ekipleri 7/24 kullanıyor.",
           "Durum makinesi iş akışları, kural tabanlı planlama, tutarlı stok akışları.",
           "SAP S/4HANA entegrasyonu: senkronizasyon, doğrulama, yeniden deneme, hata kurtarma.",
           "Tıbbi Malzeme Takip (TMT) uygulamasını geliştirdim: revir randevusu, malzeme takibi.",
@@ -124,7 +124,7 @@ const cv = {
         role: "Software Developer",
         period: "Dec 2023 – Jul 2025",
         points: [
-          "Built the Operations Automation System that field teams use 24/7.",
+          "Built the Operations Automation System that the 187 gas-emergency and field teams use 24/7.",
           "State-machine workflows, rule-based scheduling, consistent inventory flows.",
           "SAP S/4HANA integration: sync, validation, retries, failure recovery.",
           "Built the Medical Supply Tracking (TMT) app: infirmary appointments, supply tracking.",

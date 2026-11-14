@@ -17,6 +17,8 @@ const home = {
       label: "Rakamlarla",
       items: [
         { value: 5, suffix: " yıl", label: "yazılım deneyimi" },
+        { value: 9, suffix: "M", label: "İstanbulkart'la günlük yolculuk" },
+        { text: "7/24", label: "İGDAŞ 187 Doğalgaz Acil iş emirleri" },
         { value: 120, suffix: "M+", label: "Drift Max Pro indirmesi" },
         { value: 9, suffix: "", label: "mikroservis, YARP arkasında" },
         { value: 100, suffix: "+", label: "CI/CD iş akışı" },
@@ -71,7 +73,7 @@ const home = {
           org: "İGDAŞ",
           role: "Yazılım Geliştirici",
           period: "2023 – 2025",
-          text: "Operasyon Otomasyon Sistemi, Tıbbi Malzeme Takip, SAP entegrasyonu.",
+          text: "Operasyon Otomasyon Sistemi (187 Doğalgaz Acil, 7/24), Tıbbi Malzeme Takip, SAP entegrasyonu.",
         },
         {
           key: "tiramisu",
@@ -99,6 +101,8 @@ const home = {
       label: "In numbers",
       items: [
         { value: 5, suffix: " years", label: "of software development" },
+        { value: 9, suffix: "M", label: "daily trips on İstanbulkart" },
+        { text: "24/7", label: "İGDAŞ 187 gas-emergency work orders" },
         { value: 120, suffix: "M+", label: "Drift Max Pro downloads" },
         { value: 9, suffix: "", label: "microservices behind YARP" },
         { value: 100, suffix: "+", label: "CI/CD workflows" },
@@ -153,7 +157,7 @@ const home = {
           org: "İGDAŞ",
           role: "Software Developer",
           period: "2023 – 2025",
-          text: "Operations Automation System, Medical Supply Tracking, SAP integration.",
+          text: "Operations Automation System (187 gas emergency, 24/7), Medical Supply Tracking, SAP integration.",
         },
         {
           key: "tiramisu",
